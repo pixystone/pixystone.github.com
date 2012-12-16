@@ -8,15 +8,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>Pixystone.github.com by Pixystone</title>
+    <title>Posts by Pixy</title>
   </head>
 
   <body>
 
     <header>
       <div class="container">
-        <h1>Pixystone.github.com</h1>
-        <h2>Pixy's Blog on GitHub</h2>
+        <h1>Blog on GitHub</h1>
+        <h2>Pixy</h2>
 
         <section id="downloads">
           <a href="https://github.com/Pixystone" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
@@ -26,32 +26,76 @@
 
     <div class="container">
       <section id="main_content">
-        <h3>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h1>轻量级标记语言 MarkDown</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h2>前言</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<hr />
 
-<h3>Designer Templates</h3>
+<p>最近发现轻量级<a href="http://zh.wikipedia.org/wiki/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">标记语言</a>写笔记的巨大优势，如<a href="http://zh.wikipedia.org/wiki/Markdown">MarkDown</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>、<a href="http://www.baidu.com">reStructedText</a><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>等等。
+在写这篇文章的时候，起初是要写关于MarkDown的<a href="http://www.sublimetext.com/">Sublime Text</a>插件，不过在写之前，我打算直接使用MarkDown编写这些文字。</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>有趣的是，在写的过程中我还是发现了更加方便快捷的工具：</p>
 
-<h3>Rather Drive Stick?</h3>
+<ul>
+<li><p><a href="http://mouapp.com">Mou</a>是一个Mac平台上的免费软件：</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li><p>界面轻便简洁，编辑界面的左边为原始内容（附带一些着色效果），右边为加上CSS后的HTML实现效果，一目了然。</p></li>
+<li><p>提供了全面的语法帮助。这对初学者来说的确不错，尽管标记语言语法十分简单。</p></li>
+<li><p>另外，在MarkDown语法基础上，Mou还加入了更加方便的脚注功能。</p></li>
+</ul>
+</li>
+<li><p>在安装合适的编辑器之前，还可以使用在线编辑方式直接显示结果，例如<a href="http://dillinger.io">Dillinger</a>。这也有助于简单快捷地入门MarkDown的语法。它还支持<a href="https://www.dropbox.com">Dropbox</a>：）</p></li>
+<li><p>其它平台软件可以参考<a href="http://wowubuntu.com/markdown/">这里</a>，目前还没有尝试过不做评论了。</p></li>
+</ul>
 
-<h3>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>附上Mou的界面：</p>
 
-<h3>Support or Contact</h3>
+<p><img src="./images/2012-12-15-Mou.png" alt="Mou-screenshot" /></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<h2>MarkDown的魔力</h2>
+
+<hr />
+
+<p>由于笔者不通HTML语言，但是又想写出美观工整的博文，怎么办？于是天上掉下来一个标记语言。</p>
+
+<ul>
+<li><p>由于轻量级的标记语言在语法上十分简单，从原始文本就能够读懂内容，相比HTML这样的“重度”标记语言（标记太多了：）就轻量很多了。</p></li>
+<li><p>MD之类的标记语言拥有许多工具可以直接将其转换成自定的HTML样式，因此在写一些读书笔记、心得时可以直接用MarkDown语法编写，省去了考虑文字样式的过程，以免影响思路。</p></li>
+<li><p>像下文一样快捷地添加代码块，并且可以实现不同的着色效果。</p></li>
+<li><p>原始文本与样式之间完全分开，更换前端样式更加简单快捷。</p></li>
+<li><p>之前已近习惯使用Evernote（印象笔记）作为强大的信息收集工具，现在，完全可以直接在Evernote中以标记语言的语法记录心得了。甚至，将转换后美观的HTML页面直接保存在笔记中。</p></li>
+</ul>
+
+
+<h2>Sublime Text 插件</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text</a>很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的<a href="http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/">教程</a>。</p>
+
+<ol>
+<li><p>首先需要安装Sublime Text的Package Control
+在控制台( Control+` )中键入：</p>
+
+<pre><code>import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+</code></pre></li>
+<li><p>在Package Control中选择Install Package，查找MarkDownBuild,MarkDownPreview,MarkDownEditor安装。</p></li>
+<li>安装MarkDownEditor后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等。</li>
+<li>安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果。</li>
+</ol>
+
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>这篇<a href="http://wowubuntu.com/markdown/">文章</a>中有很好的语法介绍。另外，多种标记语言之间的比较可以参考<a href="http://www.worldhello.net/gotgithub/appendix/markups.html">这里</a>。<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>虽然reST与Python有些许渊源，不过我觉得还是MD在语法上更加易用一些。<a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
       </section>
     </div>
 
