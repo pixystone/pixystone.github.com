@@ -1,5 +1,4 @@
-# markdown: kramdown
-markdown: redcarpet
+markdown: kramdown
 # pygments: true
 server: false
 server_port: 999
