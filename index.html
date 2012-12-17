@@ -1,9 +1,13 @@
 ---
 layout: master
 title: Posts by Pixy
+full_posts: 2
 ---
-<div class='post'>
-  <span class='date'>{{post.date | date_to_string}}</span>
-  <h1><a href='{{post.url}}'>{{post.title}}</a></h1>
-  <div class='body'>{{post.content}}</div>
-</div>
+
+{% for post in site.posts limit:page.full_posts %}
+  <!-- <div class="container"> -->
+    <span class='date'>{{post.date | date_to_string}}</span>
+    <h1><a href='{{post.url}}'>{{post.title}}</a></h1>
+    <div class='body'>{{post.content}}</div>
+  <!-- </div> -->
+{% endfor %}
