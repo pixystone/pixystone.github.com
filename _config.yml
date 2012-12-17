@@ -1,5 +1,5 @@
 markdown: kramdown
-pygments: true
+# pygments: true
 server: false
 server_port: 999
 exclude: html
