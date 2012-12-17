@@ -77,7 +77,8 @@ title: "轻量级标记语言 MarkDown"
 
 	![kramdown](/images/2012-12-16-kramdown.png)
 
-	此外，Python实现的MarkDown解释器[py-markdown2][]中也包含对脚注实现的插件（[Extra](https://github.com/trentm/python-markdown2/wiki/footnotes))。返回
+	此外，Python实现的MarkDown解释器[py-markdown2][]中也包含对脚注实现的插件（[Extra](https://github.com/trentm/python-markdown2/wiki/footnotes))。
+	甚至是基于jekyll的Python实现[Hyde](http://ringce.com/hyde)。返回
 
 [标记语言]: http://zh.wikipedia.org/wiki/标记语言
 [Sublime Text]: http://www.sublimetext.com/
