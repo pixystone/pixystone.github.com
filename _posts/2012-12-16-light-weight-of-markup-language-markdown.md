@@ -7,21 +7,21 @@ title: "轻量级标记语言 MarkDown"
 ---
 最近发现轻量级[标记语言]写笔记的巨大优势，如[MarkDown][][^1]、[reStructuredText][][^2]等等。在写这篇文章的时候，起初是要写关于MarkDown的[Sublime Text]插件，不过在写之前，我打算直接使用MarkDown编写这些文字。
 
-有趣的是，在写的过程中我还是发现了更加方便快捷的工具：
+有趣的是，在写的过程中我还发现了一个更加方便快捷的工具：
 
-1. [Mou][]是一个Mac平台上的免费软件：
+1. [Mou][]是一个Mac平台上的免费软件，用于编写基于MarkDown的文档：
 
 	- 界面轻便简洁，编辑界面的左边为原始内容（附带一些着色效果），右边为加上CSS后的HTML实现效果，一目了然
 	- 提供了全面的语法帮助。这对初学者来说的确不错，尽管标记语言语法十分简单
 	- 另外，在MarkDown语法基础上，Mou还加入了更加方便的脚注功能[^3]
+	- 附上Mou的界面：
+
+	![Mou-screenshot](/images/2012-12-15-Mou.png)
 
 2. 在安装合适的编辑器之前，还可以使用在线编辑方式直接显示结果，例如[Dillinger][]。这也有助于简单快捷地入门MarkDown的语法。它还支持[Dropbox][]：）
 
 3. 其它平台软件可以参考[这里](http://wowubuntu.com/markdown/)，目前还没有尝试过不做评论了
 
-附上Mou的界面：
-
-![Mou-screenshot](/images/2012-12-15-Mou.png)
 
 ## MarkDown的魔力 ##
 ---
@@ -38,6 +38,8 @@ title: "轻量级标记语言 MarkDown"
 - 之前已近习惯使用Evernote（印象笔记）作为强大的信息收集工具，现在，完全可以直接在Evernote中以标记语言的语法记录心得了。甚至，将转换后美观的HTML页面直接保存在笔记中
 
 ## Sublime Text 插件
+---
+鉴于不同的解释器所表现的HTML效果不尽相同，最好能够统一使用的解释器及其额外的插件。由于博客使用GitHub推荐的jekyll，因此使用一个编辑器+command tool的方式生成html文件预览最终效果更加方便。
 
 [Sublime Text]很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的[教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
 
