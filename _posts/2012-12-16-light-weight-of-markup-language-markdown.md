@@ -47,7 +47,9 @@ title: "轻量级标记语言 MarkDown"
 
 	在控制台( Control+` )中键入：
 
-	   import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()
+		{% highlight python linenos %}
+		import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()
+		{%endhighlight%}
 
 2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditor进行安装
 
@@ -65,8 +67,8 @@ title: "轻量级标记语言 MarkDown"
 	
 	在
 
-		jekyll --help
-	
+		$ jekyll --help
+
 	中可以发现，jekyll包含使用不同转换引擎的选项：
 
 		--rdiscount                  Use rdiscount gem for Markdown
