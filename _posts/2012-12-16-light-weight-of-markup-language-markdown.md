@@ -43,19 +43,17 @@ title: "轻量级标记语言 MarkDown"
 
 [Sublime Text]很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的[教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
 
-- 首先需要安装Sublime Text的Package Control。
+1. 首先需要安装Sublime Text的Package Control。
 
 	在控制台( Control+` )中键入：
 
-~~~ python
-import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()
-~~~
+		import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()
 
-- 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditor进行安装
+2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditor进行安装
 
-- 安装MarkDownEditor后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
+3. 安装MarkDownEditor后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
 
-- 安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果
+4. 安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果
 
 ---
 
@@ -67,17 +65,13 @@ import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_pac
 	
 	在
 
-	~~~ sh
-	$ jekyll --help
-	~~~
-
+		jekyll --help
+	
 	中可以发现，jekyll包含使用不同转换引擎的选项：
 
-	~~~ sh
-	--rdiscount                  Use rdiscount gem for Markdown
-	--redcarpet                  Use redcarpet gem for Markdown
-	--kramdown                   Use kramdown gem for Markdown
-	~~~
+		--rdiscount                  Use rdiscount gem for Markdown
+		--redcarpet                  Use redcarpet gem for Markdown
+		--kramdown                   Use kramdown gem for Markdown
 
 	默认引擎为[Maruku](http://maruku.rubyforge.org/)，在官方文档的配置说明中发现，kramdown下有一个默认参数footnote_nr: 1，那么显然kramdown是支持脚注功能的，用法参照Mou进行尝试，成功。之后找到其[主页](http://kramdown.rubyforge.org/index.html)，以及脚注的[语法](http://kramdown.rubyforge.org/syntax.html#footnotes)。这个解释器还是蛮强大的，对MarkDown语法做了许多扩展。似乎还支持html到md的反向转换？逆天了：
 
