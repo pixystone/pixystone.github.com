@@ -3,4 +3,3 @@ markdown: kramdown
 server: false
 server_port: 999
 exclude: html
-SITE_PATH:"http://pixystone.github.com/"
