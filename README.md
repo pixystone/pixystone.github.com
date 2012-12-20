@@ -1,8 +1,6 @@
-Pixy's Blog on GitHub
-====================
-
-## pixystone.github.com ##
+Pixy's Blog on GitHub Page
+---
 
 ```
-Index Page test:)
+This is a personal [blog](http://pixystone.github.com/)
 ```
