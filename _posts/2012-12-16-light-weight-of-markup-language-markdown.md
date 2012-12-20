@@ -39,7 +39,7 @@ title: "轻量级标记语言 MarkDown"
 
 ## Sublime Text 插件
 ---
-鉴于不同的解释器所表现的HTML效果不尽相同，最好能够统一使用的解释器及其额外的插件。由于博客使用GitHub推荐的jekyll，因此使用一个编辑器+command tool的方式生成html文件预览最终效果更加方便。
+鉴于不同的解释器所表现的HTML效果不尽相同，最好选择一个接近标准的解释器及其广泛使用的额外插件，以免格式过于小众影响不同平台上的转换效果。由于博客使用GitHub推荐的jekyll，因此使用一个编辑器+command tool的方式全自动生成html文件预览最终效果将会更加方便。
 
 [Sublime Text]很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的[教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
 
@@ -47,7 +47,7 @@ title: "轻量级标记语言 MarkDown"
 
 	在控制台( Control+` )中键入：
 
-	   import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()
+	   import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 
 2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditor进行安装
 
