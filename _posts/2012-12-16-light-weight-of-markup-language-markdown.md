@@ -49,9 +49,9 @@ title: "轻量级标记语言 MarkDown"
 
 	   import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 
-2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditor进行安装
+2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditing进行安装
 
-3. 安装MarkDownEditor后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
+3. 安装MarkDownEditing后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
 
 4. 安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果
 
