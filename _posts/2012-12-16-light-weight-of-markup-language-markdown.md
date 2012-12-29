@@ -14,8 +14,11 @@ tags : [markdown, github page, jekyll, sublime text]
 1. [Mou][]是一个Mac平台上的免费软件，用于编写基于MarkDown的文档：
 
 	- 界面轻便简洁，编辑界面的左边为原始内容（附带一些着色效果），右边为加上CSS后的HTML实现效果，一目了然
+
 	- 提供了全面的语法帮助。这对初学者来说的确不错，尽管标记语言语法十分简单
+
 	- 另外，在MarkDown语法基础上，Mou还加入了更加方便的脚注功能[^3]
+
 	- 附上Mou的界面：
 
 	![Mou-screenshot](/assets/images/posts/2012-12-15-Mou.png)
