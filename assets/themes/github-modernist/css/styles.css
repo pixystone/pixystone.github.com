@@ -19,7 +19,7 @@ body {
 }
 
 .wrapper {
-  width: 640px;
+  width: 800px;
   margin: 0 auto;
   background: #DEDEDE;
   -webkit-border-radius: 8px;
@@ -157,19 +157,20 @@ header ul li + li + li {
 }
 header ul a {
   line-height: 1;
-  font-size: 11px;
+  font-size: 14px;
   color: #fff;
-  color: rgba(255, 255, 255, 0.8);
+  /*color: rgba(255, 255, 255, 0.8);*/
   display: block;
   text-align: center;
   font-weight: 400;
-  padding-top: 6px;
+  padding-top: 8px;
   height: 40px;
   text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
 }
 header ul a strong {
-  font-size: 14px;
+  font-size: 11px;
   display: block;
+  color: rgba(255, 255, 255, 0.8);
   color: #fff;
   -webkit-font-smoothing: antialiased;
 }
