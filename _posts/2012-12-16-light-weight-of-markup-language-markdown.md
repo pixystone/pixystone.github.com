@@ -49,7 +49,9 @@ tags : [markdown, github page, jekyll, sublime text]
 
 	在控制台( Control+` )中键入：
 
-	   import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+	<pre><code class="python"
+>import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+</code></pre>
 
 2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditing进行安装
 
@@ -67,13 +69,17 @@ tags : [markdown, github page, jekyll, sublime text]
 	
 	在
 
-		$ jekyll --help
+	<pre><code class="sh"
+>$ jekyll --help
+</code></pre>
 
 	中可以发现，jekyll包含使用不同转换引擎的选项：
 
-		--rdiscount                  Use rdiscount gem for Markdown
-		--redcarpet                  Use redcarpet gem for Markdown
-		--kramdown                   Use kramdown gem for Markdown
+	<pre><code class="sh"
+>--rdiscount                  Use rdiscount gem for Markdown
+--redcarpet                  Use redcarpet gem for Markdown
+--kramdown                   Use kramdown gem for Markdown
+</code></pre>
 
 	默认引擎为[Maruku](http://maruku.rubyforge.org/)，在官方文档的配置说明中发现，kramdown下有一个默认参数footnote_nr: 1，那么显然kramdown是支持脚注功能的，用法参照Mou进行尝试，成功。之后找到其[主页](http://kramdown.rubyforge.org/index.html)，以及脚注的[语法](http://kramdown.rubyforge.org/syntax.html#footnotes)。这个解释器还是蛮强大的，对MarkDown语法做了许多扩展。似乎还支持html到md的反向转换？逆天了：
 
