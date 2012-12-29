@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "轻量级标记语言 MarkDown"
+category : 笔记
+tags : [markdown, github page, jekyll, sublime text]
 ---
 
 ## 前言 ##
@@ -16,7 +18,7 @@ title: "轻量级标记语言 MarkDown"
 	- 另外，在MarkDown语法基础上，Mou还加入了更加方便的脚注功能[^3]
 	- 附上Mou的界面：
 
-	![Mou-screenshot](/images/posts/2012-12-15-Mou.png)
+	![Mou-screenshot](/assets/images/posts/2012-12-15-Mou.png)
 
 2. 在安装合适的编辑器之前，还可以使用在线编辑方式直接显示结果，例如[Dillinger][]。这也有助于简单快捷地入门MarkDown的语法。它还支持[Dropbox][]：）
 
@@ -75,7 +77,7 @@ title: "轻量级标记语言 MarkDown"
 
 	默认引擎为[Maruku](http://maruku.rubyforge.org/)，在官方文档的配置说明中发现，kramdown下有一个默认参数footnote_nr: 1，那么显然kramdown是支持脚注功能的，用法参照Mou进行尝试，成功。之后找到其[主页](http://kramdown.rubyforge.org/index.html)，以及脚注的[语法](http://kramdown.rubyforge.org/syntax.html#footnotes)。这个解释器还是蛮强大的，对MarkDown语法做了许多扩展。似乎还支持html到md的反向转换？逆天了：
 
-	![kramdown](/images/posts/2012-12-16-kramdown.png)
+	![kramdown](/assets/images/posts/2012-12-16-kramdown.png)
 
 	此外，Python实现的MarkDown解释器[py-markdown2][]中也包含对脚注实现的插件（[Extra](https://github.com/trentm/python-markdown2/wiki/footnotes))。
 	甚至是基于jekyll的Python实现[Hyde](http://ringce.com/hyde)。返回
