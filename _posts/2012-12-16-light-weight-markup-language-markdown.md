@@ -64,6 +64,8 @@ tags : [markdown, github page, jekyll, sublime text]
 
 ---
 
+### 脚注 ###
+
 [^1]: 这篇[文章](http://wowubuntu.com/markdown/)中有很好的语法介绍。另外，多种标记语言之间的比较可以参考[这里](http://www.worldhello.net/gotgithub/appendix/markups.html)。返回
 
 [^2]: 虽然reST与Python有些许渊源，不过我觉得还是MD在语法上更加易用一些。返回
