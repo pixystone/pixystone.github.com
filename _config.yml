@@ -11,12 +11,12 @@ markdown: kramdown
 # so be sure to set them if your theme uses them.
 #
 title : 细水长流
-tagline: Site Tagline
+tagline: Pixy
 author :
-  name : pixy.bupt
+  name : Pixy Yuan
   email : pixy.bupt@gmail.com
   github : pixystone
-  twitter : pixystone
+  # twitter : pixystone
   # feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
