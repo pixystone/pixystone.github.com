@@ -10,10 +10,14 @@ post_limit: 3
 <li><span>{{ post.date | date_to_string }}</span> &raquo;</li>
 <h1><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h1>
 
+<div>
 {{ post.content | truncatewords }}
+</div>
 
-<h3><a href="{{ BASE_PATH }}{{ post.url }}">More</a></h3>
-<br>
+<b><small><a href="{{ BASE_PATH }}{{ post.url }}">More</a></small></b>
+<br />
+<br />
+
 {% endfor %}
 
 <h2><a href="{{ BASE_PATH }}/archive.html">所有文章</a></h2>
