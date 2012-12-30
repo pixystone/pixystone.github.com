@@ -1,11 +1,27 @@
 ---
 layout: page
 title: Welcome to Pixy's Blog
+post_limit: 3
 ---
 {% include JB/setup %}
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+{% for post in site.posts limit:page.post_limit %}
+
+<li><span>{{ post.date | date_to_string }}</span> &raquo;</li>
+<h1><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h1>
+
+{{ post.content | truncatewords }}
+
+<h3><a href="{{ BASE_PATH }}{{ post.url }}">More</a></h3>
+<br>
+{% endfor %}
+
+<h2><a href="{{ BASE_PATH }}/archive.html">所有文章</a></h2>
+
+<hr>
+
+{% for post in site.posts limit:page.post_limit %}
+
+<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+
+{% endfor %}
