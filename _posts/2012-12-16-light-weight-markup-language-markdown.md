@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "轻量级标记语言 MarkDown"
-category : 笔记
-tags : [markdown, github page, jekyll, sublime text]
+category: 笔记
+tags: [markdown, github page, jekyll, sublime text]
 ---
 
 ## 前言 ##

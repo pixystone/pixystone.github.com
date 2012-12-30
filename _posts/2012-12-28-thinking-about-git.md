@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "关于几个git命令的理解"
-category : 笔记
-tags : [git]
+category: 笔记
+tags: [git]
 ---
 
 ## 前言 ##

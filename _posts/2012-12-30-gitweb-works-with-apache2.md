@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Gitweb 与 Apache2 的协奏"
-catagory: 笔记
-tag: [git, gitweb, apache, ssh, linux, gitolite]
+category: 笔记
+tags: [git, gitweb, apache, ssh, linux, gitolite]
 ---
 
 ## 前言
 ---
 
-笔者主要参考了《Git权威指南》，这本书非常系统，教科书般的详解足以解决大部分遇到的问题，是一本好书。至于剩余的一小部分问题，交给Google吧：）
+《Git权威指南》这本书非常系统，教科书般的详解足以解决大部分遇到的问题，是一本好书值得推荐。至于剩余的一小部分问题，交给Google吧：）
 
 ## 涉及的权限交叉
 ---
