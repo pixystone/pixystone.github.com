@@ -8,7 +8,7 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 ## 前言
 ---
 
-《Git权威指南》这本书非常系统，教科书般的详解足以解决大部分遇到的问题，是一本好书值得推荐。至于剩余的一小部分问题，交给Google吧：）
+《Git权威指南》这本书非常系统，教科书般的详解足以解决大部分遇到的问题，是一本好书值得推荐。至于剩余的一小部分问题，交给Google吧:)
 
 ## 涉及的权限交叉
 ---
@@ -19,9 +19,9 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 
 - apache使用的用户为www-data，名字很怪。总的来说，如果需要web服务（下称apache）获取到诸如svn服务器所需要的仓库内容或者是gitweb服务所需要的git目录，一定需要将www-data用户加入svn或者git用户所在的用户组，并且对所要读取的目录添加`g+r`的基本权限（注意目录需要`g+rx`）[^1]。
 
-- 由于git使用SSH认证，ssh对git用户的~/.ssh/目录及其各级父目录有严格的要求，必须为go-w：
+- 由于git使用SSH认证，ssh对git用户的`~/.ssh/`目录及其各级父目录的权限有严格的要求，必须为`go-w`：
 
-    即对 `/, /home, /home/git, /home/git/.ssh` 需要逐级取消组和其它的写入权限:`go-w`
+    即对 `/, /home, /home/git, /home/git/.ssh` 需要逐级取消`组和其它`的写入权限:`go-w`
 
     或许是因为误操作，最初配置ssh时同时取消了`/home/git`目录的`go+x`权限，由于该目录没有执行权限，apache的www-data就无法进入`/home/git/`的下级目录，也就无法读取其下级目录中的内容，尽管www-data在git组中具有读取权限。所以导致gitweb服务无法获取到git库的目录内容。最后，总算是补上了一课Linux的权限知识，加上git用户的home目录`g+x`权限后，问题解决。
 
@@ -55,13 +55,13 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
         # file with project list; by default, simply scan the projectroot dir.
         $projects_list = "/home/git/projects.list";
 
-4. 重启apache吧
+4. 重启apache
 
     <pre><code class="sh"
 >$sudo apachectl restart
 </code></pre>
 
-5. 打开网页试试效果：）`http://localhost/git/`
+    打开网页试试效果:) `http://localhost/git/`
 
 ## 后记
 ---
@@ -91,9 +91,9 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 
 ### 脚注
 
-[^1]: 在Linux系统中，文件（夹）的权限分为三种：用户、用户组、其它，即u（user）、g（group）、o（other），普通的权限也包含三种：读取（r）、写入（w）、执行（x）。
+[^1]: 在Linux系统中，文件(夹)的权限分为三种：用户、用户组、其它，即u(user)、g(group)、o(other)，普通的权限也包含三种：读取(r)、写入(w)、执行(x)。
 
-    因此对文件（夹）使用chmod添加（+）或删除（-）权限时，例如，添加组成员的读取权限：
+    因此对文件(夹)使用chmod添加(+)或删除(-)权限时，例如，添加组成员的读取权限：
 
     <pre><code class="sh"
 >$sudo chmod g+r [file]
