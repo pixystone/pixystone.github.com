@@ -20,6 +20,8 @@ group: navigation
 
 本站之所以存在，纯粹机缘巧合，并非一厢情愿。虽然在[如何成为一名程序员]()中提到，建立一个博客是必要的，但是对于一个不通HTML又十分懒惰的程序员来说，嗯..实际上我承认，一定是热情不够:P
 
+毕竟，[你第一要做的是开始去做]()。
+
 Anyway，在一个风雪交加的夜晚，我看见了一本《Git权威指南》静静地躺在寝室老杨的桌上，很厚实，一定充满了智慧。我站着翻了两页，再翻了许多页，又坐了下来继续看，Git的确拥有魅力。经历了一周的着迷，我的脑海中总是充斥着各种有关apache、vsftp、gitolite、gitweb之类的东西。在该书的作者[蒋鑫]()老师的博客中，有缘地发现了[用 Git 维护博客？酷！]()。这的确很酷，那么为何不试试用这种方式记录那些充斥脑海中的东西呢？
 
 - [轻量级标记语言 MarkDown]({% post_url 2012-12-16-light-weight-markup-language-markdown %})
@@ -51,6 +53,7 @@ Anyway，在一个风雪交加的夜晚，我看见了一本《Git权威指南�
 ---
 
 [如何成为一名程序员]: http://www.aqee.net/developer-road-the-list/
+[你第一要做的是开始去做]: http://www.aqee.net/the-first-step-is-to-start/
 [蒋鑫]: http://www.worldhello.net
 [用 Git 维护博客？酷！]: http://www.worldhello.net/2011/11/29/jekyll-based-blog-setup.html
 [jekyll]: https://github.com/mojombo/jekyll
