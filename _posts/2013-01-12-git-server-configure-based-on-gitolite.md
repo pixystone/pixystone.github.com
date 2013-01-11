@@ -66,12 +66,14 @@ tags: [git,gitolite,ssh]
 
 ### 版本库管理
 
-在`gitolite-admin/conf/gitolite.conf`文件中，已经预先包含了gitolite-admin库和testing库相关的配置内容，颇具参考价值。添加一行不存在的版本库名字，即可添加新库。
+在`gitolite-admin/conf/gitolite.conf`文件中，已经预先包含了gitolite-admin库和testing库相关的配置内容，颇具参考价值。
+
+- 添加一行不存在的版本库名字，即可添加新库。
 
         repo foo
             RW      =       pixy
 
-显然，有关权限`RW`等操作的等式右边为虚拟用户，现在介绍如何添加虚拟用户。
+    显然，有关权限`RW`等操作的等式右边为虚拟用户，现在介绍如何添加虚拟用户。
 
 ### 管理git虚拟账户
 
@@ -87,7 +89,9 @@ tags: [git,gitolite,ssh]
 
 在添加完所需的虚拟用户后，将这些提交push到服务器上。服务器根据特定的钩子脚本(hooks)执行shell命令，将这些公钥添加到git用户的`~/.ssh/authorized_keys`中。
 
-特别的是，与标准SSH用户不同，添加在`authorized_keys`中的除了公钥外，还包含了特殊的执行语句以及相应的虚拟用户名，以便于`gitolite`识别并限制该ssh访问所能执行的shell命令。因此，执行
+特别的是，与标准SSH用户不同，添加在`authorized_keys`中的除了公钥外，还包含了特殊的执行语句以及相应的虚拟用户名，以便于`gitolite`识别并限制该ssh访问所能执行的shell命令。
+
+因此，执行
 
         $ssh git@hostname
 
