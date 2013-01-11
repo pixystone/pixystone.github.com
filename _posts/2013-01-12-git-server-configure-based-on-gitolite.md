@@ -68,8 +68,8 @@ tags: [git,gitolite,ssh]
 
 在`gitolite-admin/conf/gitolite.conf`文件中，已经预先包含了gitolite-admin库和testing库相关的配置内容，颇具参考价值。添加一行不存在的版本库名字，即可添加新库。
 
-    repo foo
-        RW      =       pixy
+        repo foo
+            RW      =       pixy
 
 显然，有关权限`RW`等操作的等式右边为虚拟用户，现在介绍如何添加虚拟用户。
 
@@ -89,7 +89,7 @@ tags: [git,gitolite,ssh]
 
 特别的是，与标准SSH用户不同，添加在`authorized_keys`中的除了公钥外，还包含了特殊的执行语句以及相应的虚拟用户名，以便于`gitolite`识别并限制该ssh访问所能执行的shell命令。因此，执行
 
-    $ssh git@hostname
+        $ssh git@hostname
 
 将只能得到`gitolite`返回的一些信息，然后中断连接，不能够再执行更多的shell命令。这保证了服务器的安全。
 
@@ -116,6 +116,7 @@ tags: [git,gitolite,ssh]
 
 
 ---
+
 ### 脚注
 
 [^1]: 为什么是git？因为我不甘于svn下管理源码，当我深入了解git之后我才感觉到，在我使用svn时有一个不好的习惯，习惯完成所有工作后作一次提交，这虽然很合逻辑，但是却严重阻碍了项目进展。当时间模糊了我的记忆时，我根本无法在这些大型的提交中分辨哪些修改是日志中提到的添加的某一个功能。而git赋予我更加灵活的工作方式，在本地做细小的提交而不需要将它们全都反应在服务器上。
