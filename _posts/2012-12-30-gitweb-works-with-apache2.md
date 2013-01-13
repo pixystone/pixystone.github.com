@@ -34,7 +34,7 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 1. 安装gitweb apache：
 
     <pre><code class="sh"
->$sudo apt-get install apache2,gitweb
+>$ sudo apt-get install apache2,gitweb
 </code></pre>
 
 2. 在 `/etc/apache2/conf.d/gitweb` 文件中加入：
@@ -58,7 +58,7 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 4. 重启apache
 
     <pre><code class="sh"
->$sudo apachectl restart
+>$ sudo apachectl restart
 </code></pre>
 
     打开网页试试效果:) `http://localhost/git/`
@@ -96,7 +96,7 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
     因此对文件(夹)使用chmod添加(+)或删除(-)权限时，例如，添加组成员的读取权限：
 
     <pre><code class="sh"
->$sudo chmod g+r [file]
+>$ sudo chmod g+r [file]
 </code></pre>
 
 
