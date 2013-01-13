@@ -11,7 +11,7 @@ tags: [markdown, github page, jekyll, sublime text]
 
 有趣的是，在写的过程中我还发现了一个更加方便快捷的工具：
 
-1. [Mou][]是一个Mac平台上的免费软件，用于编写基于MarkDown的文档：
+- [Mou][]是一个Mac平台上的免费软件，用于编写基于MarkDown的文档：
 
 	- 界面轻便简洁，编辑界面的左边为原始内容（附带一些着色效果），右边为加上CSS后的HTML实现效果，一目了然
 
@@ -23,9 +23,9 @@ tags: [markdown, github page, jekyll, sublime text]
 
 	![Mou-screenshot](/assets/images/posts/2012-12-15-Mou.png)
 
-2. 在安装合适的编辑器之前，还可以使用在线编辑方式直接显示结果，例如[Dillinger][]。这也有助于简单快捷地入门MarkDown的语法。它还支持[Dropbox][]：）
+- 在安装合适的编辑器之前，还可以使用在线编辑方式直接显示结果，例如[Dillinger][]。这也有助于简单快捷地入门MarkDown的语法。它还支持[Dropbox][]：）
 
-3. 其它平台软件可以参考[这里](http://wowubuntu.com/markdown/)，目前还没有尝试过不做评论了
+- 其它平台软件可以参考[这里](http://wowubuntu.com/markdown/)，目前还没有尝试过不做评论了
 
 
 ## MarkDown的魔力 ##
@@ -48,19 +48,19 @@ tags: [markdown, github page, jekyll, sublime text]
 
 [Sublime Text]很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的[教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
 
-1. 首先需要安装Sublime Text的Package Control。
+- 首先需要安装Sublime Text的Package Control。
 
 	在控制台( Control+` )中键入：
 
-	<pre><code class="python"
->import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
-</code></pre>
+{% highlight python %}
+	import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+{% endhighlight %}
 
-2. 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditing进行安装
+- 在Package Control中选择Install Package，查找MarkDownBuild、MarkDownPreview、MarkDownEditing进行安装
 
-3. 安装MarkDownEditing后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
+- 安装MarkDownEditing后，只要打开md或者txt等等扩展名的文件即可实现MD相关的快捷编辑功能了，Package Setting中可以找到更详细的设置，例如字体、样式、宽度、对应扩展名等等
 
-4. 安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果
+- 安装MarkDownBuild,MarkDownPreview则能直接使用Build生成页面并使用默认浏览器打开，展示效果
 
 ---
 
@@ -74,17 +74,13 @@ tags: [markdown, github page, jekyll, sublime text]
 	
 	在
 
-	<pre><code class="sh"
->$ jekyll --help
-</code></pre>
+		$ jekyll --help
 
 	中可以发现，jekyll包含使用不同转换引擎的选项：
 
-	<pre><code class="sh"
->--rdiscount                  Use rdiscount gem for Markdown
---redcarpet                  Use redcarpet gem for Markdown
---kramdown                   Use kramdown gem for Markdown
-</code></pre>
+		--rdiscount                  Use rdiscount gem for Markdown
+		--redcarpet                  Use redcarpet gem for Markdown
+		--kramdown                   Use kramdown gem for Markdown
 
 	默认引擎为[Maruku](http://maruku.rubyforge.org/)，在官方文档的配置说明中发现，kramdown下有一个默认参数footnote_nr: 1，那么显然kramdown是支持脚注功能的，用法参照Mou进行尝试，成功。之后找到其[主页](http://kramdown.rubyforge.org/index.html)，以及脚注的[语法](http://kramdown.rubyforge.org/syntax.html#footnotes)。这个解释器还是蛮强大的，对MarkDown语法做了许多扩展。似乎还支持html到md的反向转换？逆天了：
 

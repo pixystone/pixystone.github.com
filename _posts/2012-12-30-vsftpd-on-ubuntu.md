@@ -119,15 +119,21 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
 - 为了方便，使用root操作。
 
-        # cd /etc
+{% highlight sh %}
+    $ cd /etc
+{% endhighlight %}
 
 - 首先新建一个文件tmp.txt
 
-        # touch tmp.txt
+{% highlight sh %}
+    $ touch tmp.txt
+{% endhighlight %}
 
 - 在文件中加入用户名和密码，奇数行用户名，偶数行密码，例如
 
-        # vi tmp.txt
+{% highlight sh %}
+    $ vi tmp.txt
+{% endhighlight %}
 
     内容如下：
 
@@ -140,11 +146,15 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
 - 然后以这个文件为模板新建一个用户名密码数据库：
 
-        # db_load -T -t hash -f tmp.txt /etc/ftpconf/vsftpd_login.db
+{% highlight sh %}
+    $ db_load -T -t hash -f tmp.txt /etc/ftpconf/vsftpd_login.db
+{% endhighlight %}
 
     db_load命令包含在db-util中，
 
-        # apt-get install db-util
+{% highlight sh %}
+    $ apt-get install db-util
+{% endhighlight %}
 
     即可。[^3]
 
@@ -157,7 +167,9 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
 - 现在我们就需要编辑这个文件：
 
-        # vi /etc/pam.d/vsftpd
+{% highlight sh %}
+    $ vi /etc/pam.d/vsftpd
+{% endhighlight %}
 
 - 文件中原本就带有一些内容，例如：
 
@@ -222,8 +234,10 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
 ### 5. 测试一下成果吧:)
 
-    # restart vsftpd
-    # ftp localhost
+{% highlight sh %}
+    $ restart vsftpd
+    $ ftp localhost
+{% endhighlight %}
 
 以下是本机测试结果：
 

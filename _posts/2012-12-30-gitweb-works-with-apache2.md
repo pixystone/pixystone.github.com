@@ -31,13 +31,13 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 
 在这简单记录一下总体流程吧，在《Git权威指南》中有更详细的记录。这里就作为读书笔记吧。
 
-1. 安装gitweb apache：
+- 安装gitweb apache：
 
-    <pre><code class="sh"
->$ sudo apt-get install apache2,gitweb
-</code></pre>
+{% highlight sh %}
+        $ sudo apt-get install apache2,gitweb
+{% endhighlight %}
 
-2. 在 `/etc/apache2/conf.d/gitweb` 文件中加入：
+- 在 `/etc/apache2/conf.d/gitweb` 文件中加入：
 
         Alias /git /usr/share/gitweb     #这里表示服务器url http://host/git/ 代表服务器中的 /usr/share/gitweb 目录
         <Directory /usr/share/gitweb>
@@ -48,20 +48,20 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
         Allow from all
         </Directory>
 
-3. 在 /etc/gitweb.conf 文件中修改git根目录等信息：
+- 在 /etc/gitweb.conf 文件中修改git根目录等信息：
 
         # path to git projects (<project>.git)
         $projectroot = "/home/git/repositories/";
         # file with project list; by default, simply scan the projectroot dir.
         $projects_list = "/home/git/projects.list";
 
-4. 重启apache
+- 重启apache
 
-    <pre><code class="sh"
->$ sudo apachectl restart
-</code></pre>
+{% highlight sh %}
+        $ sudo apachectl restart
+{% endhighlight %}
 
-    打开网页试试效果:) `http://localhost/git/`
+- 打开网页试试效果:) `http://localhost/git/`
 
 ## 后记
 ---
@@ -95,9 +95,7 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 
     因此对文件(夹)使用chmod添加(+)或删除(-)权限时，例如，添加组成员的读取权限：
 
-    <pre><code class="sh"
->$ sudo chmod g+r [file]
-</code></pre>
+        $ sudo chmod g+r [file]
 
 
 [鸟哥]: http://linux.vbird.org

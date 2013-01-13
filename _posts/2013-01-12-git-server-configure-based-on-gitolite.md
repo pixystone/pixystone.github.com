@@ -32,27 +32,35 @@ tags: [git, gitolite, ssh]
 
 ### 安装 Install
 
-1. 首先应该清楚，`gitolite`只需要一个实体用户(real user)，通常命名为`git`。因此以下的操作均在`git`用户下进行。
+- 首先应该清楚，`gitolite`只需要一个实体用户(real user)，通常命名为`git`。因此以下的操作均在`git`用户下进行。
 
-2. 克隆一个源码库到本地：
+- 克隆一个源码库到本地：
 
+{% highlight sh %}
         $ git clone git://github.com/sitaramc/gitolite
+{% endhighlight %}
 
-3. 在本地源码中执行安装
+- 在本地源码中执行安装
 
+{% highlight sh %}
         $ gitolite/install -to /usr/local/gitolite/bin
+{% endhighlight %}
 
     这一步将会把所有的程序安装到`/usr/local/gitolite/bin`目录下。
     
 ### 配置 Setup
 
-1. `gitolite`中所有配置及版本库的权限管理是通过`git`实现的，所以需要在`gitolite`管理员所使用的计算机上生成一对密钥对，并且将公钥`*.pub`拷贝到这台`gitolite`服务器上。假设碰巧管理员名字叫`pixy`，根据上节安装完成后在`git`用户下配置`gitolite`：
+- `gitolite`中所有配置及版本库的权限管理是通过`git`实现的，所以需要在`gitolite`管理员所使用的计算机上生成一对密钥对，并且将公钥`*.pub`拷贝到这台`gitolite`服务器上。假设碰巧管理员名字叫`pixy`，根据上节安装完成后在`git`用户下配置`gitolite`：
 
+{% highlight sh %}
         $ gitolite setup -pk pixy.pub
+{% endhighlight %}
 
-2. 成功后，管理员即可在自己的计算机上进行`gitolite`的配置和管理：
+- 成功后，管理员即可在自己的计算机上进行`gitolite`的配置和管理：
 
+{% highlight sh %}
         $ git clone git@host:gitolite-admin
+{% endhighlight %}
 
     `gitolite-admin`这个版本库是默认生成的，用于管理`gitolite`。其中包括：
     
@@ -93,7 +101,9 @@ tags: [git, gitolite, ssh]
 
 因此，执行
 
-        $ ssh git@hostname
+{% highlight sh %}
+    $ ssh git@hostname
+{% endhighlight %}
 
 将只能得到`gitolite`返回的一些信息，然后中断连接，不能够再执行更多的shell命令。这保证了服务器的安全。
 
