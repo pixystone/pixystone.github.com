@@ -26,6 +26,7 @@ Anyway，在一个风雪交加的夜晚，我看见了一本《Git权威指南�
 
 - [轻量级标记语言 MarkDown]({% post_url 2012-12-16-light-weight-markup-language-markdown %})
 - [Gitweb 与 Apache2 的协奏]({% post_url 2012-12-30-gitweb-works-with-apache2 %})
+- [Git服务器配置 - gitolite]({% post_url 2013-01-12-git-server-configure-based-on-gitolite %})
 - 待补充...
 
 我花了足足两天时间研究有关[jekyll]()、[github pages]()、[Liquid]()的原理，以及他们之间的是如何协作的。结果如何？这一周的周会我只能说说关于服务器从Win7到Ubuntu的迁移那点事了。
