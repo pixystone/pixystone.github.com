@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Git服务器配置笔记 - gitolite"
-catagory: 笔记
-tags: [git,gitolite,ssh]
+title: "Git服务器配置 - gitolite"
+category: 笔记
+tags: [git, gitolite, ssh]
 ---
 
 ## 前言
