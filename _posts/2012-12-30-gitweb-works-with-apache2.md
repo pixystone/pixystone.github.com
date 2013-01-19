@@ -5,13 +5,15 @@ category: 笔记
 tags: [git, gitweb, apache, ssh, linux, gitolite]
 ---
 
-## 前言
 ---
+
+## 前言
 
 《Git权威指南》这本书非常系统，教科书般的详解足以解决大部分遇到的问题，是一本好书值得推荐。至于剩余的一小部分问题，交给Google吧:)
 
-## 涉及的权限交叉
 ---
+
+## 涉及的权限交叉
 
 虽然笔者入门Linux也有两年了，但是一直都没有系统地研究过这个强大的系统。[鸟哥][]的[私房菜][]着实Nice。
 
@@ -26,8 +28,9 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
     或许是因为误操作，最初配置ssh时同时取消了`/home/git`目录的`go+x`权限，由于该目录没有执行权限，apache的www-data就无法进入`/home/git/`的下级目录，也就无法读取其下级目录中的内容，尽管www-data在git组中具有读取权限。所以导致gitweb服务无法获取到git库的目录内容。最后，总算是补上了一课Linux的权限知识，加上git用户的home目录`g+x`权限后，问题解决。
 
 
-## 简单配置流程
 ---
+
+## 简单配置流程
 
 在这简单记录一下总体流程吧，在《Git权威指南》中有更详细的记录。这里就作为读书笔记吧。
 
@@ -63,8 +66,9 @@ tags: [git, gitweb, apache, ssh, linux, gitolite]
 
 - 打开网页试试效果:) `http://localhost/git/`
 
-## 后记
 ---
+
+## 后记
 
 由于服务器使用gitolite管理git库，因此将需要使用gitweb服务的git库添加一些描述如：
 

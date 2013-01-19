@@ -5,8 +5,10 @@ category: 笔记
 tags: [markdown, github page, jekyll, sublime text]
 ---
 
-## 前言 ##
 ---
+
+## 前言 ##
+
 最近发现轻量级[标记语言]写笔记的巨大优势，如[MarkDown][][^1]、[reStructuredText][][^2]等等。在写这篇文章的时候，起初是要写关于MarkDown的[Sublime Text]插件，不过在写之前，我打算直接使用MarkDown编写这些文字。
 
 有趣的是，在写的过程中我还发现了一个更加方便快捷的工具：
@@ -28,8 +30,10 @@ tags: [markdown, github page, jekyll, sublime text]
 - 其它平台软件可以参考[这里](http://wowubuntu.com/markdown/)，目前还没有尝试过不做评论了
 
 
-## MarkDown的魔力 ##
 ---
+
+## MarkDown的魔力 ##
+
 由于笔者不通HTML语言，但是又想写出美观工整的博文，怎么办？于是天上掉下来一个轻量级标记语言MarkDown
 
 - 由于轻量级的标记语言在语法上十分简单，从原始文本就能够读懂内容，相比HTML这样的“重度”标记语言（标记太多了：）就轻量很多了
@@ -42,8 +46,10 @@ tags: [markdown, github page, jekyll, sublime text]
 
 - 之前已近习惯使用Evernote（印象笔记）作为强大的信息收集工具，现在，完全可以直接在Evernote中以标记语言的语法记录心得了。甚至，将转换后美观的HTML页面直接保存在笔记中
 
-## Sublime Text 插件
 ---
+
+## Sublime Text 插件
+
 鉴于不同的解释器所表现的HTML效果不尽相同，最好选择一个接近标准的解释器及其广泛使用的额外插件，以免格式过于小众影响不同平台上的转换效果。由于博客使用GitHub推荐的jekyll，因此使用一个编辑器+command tool的方式全自动生成html文件预览最终效果将会更加方便。
 
 [Sublime Text]很好很强大，我最喜欢用的文本编辑器，因为它还附带了轻量级的编译功能，小段代码的测试很方便。这里不多介绍以免抢了MD风头：）SublimeText拥有MarkDown相应的插件，可以用于快速编辑，详细可见这里的[教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
