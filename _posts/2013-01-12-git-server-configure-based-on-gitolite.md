@@ -31,7 +31,7 @@ tags: [git, gitolite, ssh]
 
 ---
 
-## gitolite
+## Gitolite
 
 ### 安装 Install
 
@@ -49,7 +49,7 @@ tags: [git, gitolite, ssh]
         $ gitolite/install -to /usr/local/gitolite/bin
 {% endhighlight %}
 
-    这一步将会把所有的程序安装到`/usr/local/gitolite/bin`目录下。
+这一步将会把所有的程序安装到`/usr/local/gitolite/bin`目录下。
     
 ### 配置 Setup
 
@@ -65,7 +65,7 @@ tags: [git, gitolite, ssh]
         $ git clone git@host:gitolite-admin
 {% endhighlight %}
 
-    `gitolite-admin`这个版本库是默认生成的，用于管理gitolite。其中包括：
+- `gitolite-admin`这个版本库是默认生成的，用于管理gitolite。其中包括：
     
     - `gitolite-admin/conf/gitolite.conf`
         用于所有版本库的管理、虚拟用户权限设置等
@@ -73,7 +73,7 @@ tags: [git, gitolite, ssh]
     - `gitolite-admin/keydir/user1.pub,user2.pub`
         虚拟用户的公钥，gitolite会自动在每一次push后将这些公钥写入git用户的`~/.ssh/authorized_keys`中。
         
-    接下来将简单介绍`gitolite-admin`实现的功能。
+接下来将简单介绍`gitolite-admin`实现的功能。
 
 ### 版本库管理
 
