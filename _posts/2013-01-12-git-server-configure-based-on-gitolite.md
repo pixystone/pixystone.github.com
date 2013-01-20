@@ -35,7 +35,7 @@ tags: [git, gitolite, ssh]
 
 ### 安装 Install
 
-- 首先应该清楚，gitolite只需要一个实体用户(real user)，通常命名为git。因此以下的操作均在git用户下进行。
+首先应该清楚，gitolite只需要一个实体用户(real user)，通常命名为git。因此以下的操作均在git用户下进行。
 
 - 克隆一个源码库到本地：
 

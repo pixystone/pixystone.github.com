@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在Github上维护自己的博客"
+title: "在Github上维护博客"
 category: 笔记
 tags: [git, github page, jekyll, jekyll-bootstrap]
 ---
@@ -81,7 +81,7 @@ Jekyll使用[YAML Front Matter]()字段保存每一个页面的信息，例如�
 
     ---
     layout: post
-    title: "在Github上维护自己的博客"
+    title: "在Github上维护博客"
     category: 笔记
     tags: [git, github page, jekyll, jekyll-bootstrap]
     ---
