@@ -40,13 +40,13 @@ tags: [git, gitolite, ssh]
 - 克隆一个源码库到本地：
 
 {% highlight sh %}
-        $ git clone git://github.com/sitaramc/gitolite
+$ git clone git://github.com/sitaramc/gitolite
 {% endhighlight %}
 
 - 在本地源码中执行安装
 
 {% highlight sh %}
-        $ gitolite/install -to /usr/local/gitolite/bin
+$ gitolite/install -to /usr/local/gitolite/bin
 {% endhighlight %}
 
 这一步将会把所有的程序安装到`/usr/local/gitolite/bin`目录下。
@@ -56,13 +56,13 @@ tags: [git, gitolite, ssh]
 - gitolite中所有配置及版本库的权限管理是通过git实现的，所以需要在gitolite管理员所使用的计算机上生成一对密钥对，并且将公钥`*.pub`拷贝到这台gitolite服务器上。假设碰巧管理员名字叫`pixy`，根据上节安装完成后在git用户下配置gitolite：
 
 {% highlight sh %}
-        $ gitolite setup -pk pixy.pub
+$ gitolite setup -pk pixy.pub
 {% endhighlight %}
 
 - 成功后，管理员即可在自己的计算机上进行gitolite的配置和管理：
 
 {% highlight sh %}
-        $ git clone git@host:gitolite-admin
+$ git clone git@host:gitolite-admin
 {% endhighlight %}
 
 - `gitolite-admin`这个版本库是默认生成的，用于管理gitolite。其中包括：
@@ -105,7 +105,7 @@ tags: [git, gitolite, ssh]
 因此，执行
 
 {% highlight sh %}
-    $ ssh git@hostname
+$ ssh git@hostname
 {% endhighlight %}
 
 将只能得到gitolite返回的一些信息，然后中断连接，不能够再执行更多的shell命令。这保证了服务器的安全。
