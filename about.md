@@ -55,7 +55,6 @@ pixy意译为**喜欢恶作剧的小精灵**。
 
 经典的what、why、how么？
 
----
 
 [如何成为一名程序员]: http://www.aqee.net/developer-road-the-list/
 [你第一要做的是开始去做]: http://www.aqee.net/the-first-step-is-to-start/
