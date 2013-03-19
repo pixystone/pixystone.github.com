@@ -9,13 +9,13 @@ tags: [git, github page, jekyll, jekyll-bootstrap]
 
 ## 缘起
 
-最初与《[Git权威指南]()》结缘，在[蒋鑫]()老师的博客中发现这样一篇文章：[用 Git 维护博客？酷！]()，新颖的博客维护方式着实让我着迷。
+最初与《[Git权威指南][]》结缘，在[蒋鑫][]老师的博客中发现这样一篇文章：[用 Git 维护博客？酷！][]，新颖的博客维护方式着实让我着迷。
 
 ---
 
 ## Github Page
 
-接触git的人没有不知道github的，在github上，每个人都可以拥有自己的git版本库，只要是开源的即是免费的。github还提供了免费的个人博客或者项目主页服务：[Github Page]()。
+接触git的人没有不知道github的，在github上，每个人都可以拥有自己的git版本库，只要是开源的即是免费的。github还提供了免费的个人博客或者项目主页服务：[Github Page][]。
 
 ### 着手建立一个博客
 
@@ -29,7 +29,7 @@ tags: [git, github page, jekyll, jekyll-bootstrap]
 
 ### Jekyll
 
-在Github Page上，服务器通过[jekyll]()工具自动生成静态页面html文件。Jekyll支持将多种轻量级的标记语言[^2]转换成结构复杂的静态站点，所有html文件自动保存在_site文件夹中。
+在Github Page上，服务器通过[jekyll][]工具自动生成静态页面html文件。Jekyll支持将多种轻量级的标记语言[^2]转换成结构复杂的静态站点，所有html文件自动保存在_site文件夹中。
 
 参照jekyll的wiki，实际上并不容易上手。了解在wiki中提到的大部分链接都是理解其原理的必要条件。
 
@@ -52,7 +52,7 @@ tags: [git, github page, jekyll, jekyll-bootstrap]
 
 ### Pygments与Liquid
 
-在参数中可以看到，Jekyll支持[pygments]()工具用于代码片段的语法高亮，原理是通过在文章中嵌入[Liquid]()语句标识代码段的类型与位置。
+在参数中可以看到，Jekyll支持[pygments][]工具用于代码片段的语法高亮，原理是通过在文章中嵌入[Liquid][]语句标识代码段的类型与位置。
 
     {% raw %}
     {% highlight python %}
@@ -72,12 +72,12 @@ def hi():
 以`{% something %}`或者`{{ something }}`为格式的Liquid在模板化生成静态博客起到了巨大的作用。
 
 例如`{{ page.title }}`可以直接转换成页面的标题，而博客主页上部分显示博文内容则使用`{{ post.content | truncatewords }}`转换。
-更多用法可参见[Liquid Extensions]()。
+更多用法可参见[Liquid Extensions][]。
 {% endraw %}
 
 ### YAML Front Matter
 
-Jekyll使用[YAML Front Matter]()字段保存每一个页面的信息，例如本文的字段为
+Jekyll使用[YAML Front Matter][]字段保存每一个页面的信息，例如本文的字段为
 
     ---
     layout: post
@@ -163,11 +163,11 @@ Jekyll使用[YAML Front Matter]()字段保存每一个页面的信息，例如�
 
 #### _includes
 
-这个文件夹包含了一切可供[Liquid]()特殊语句使用的文件，包括image、html、或者纯文本的代码、说明等等。例如可以使用`{% include beauty.png %}`插入一张图片。
+这个文件夹包含了一切可供[Liquid][]特殊语句使用的文件，包括image、html、或者纯文本的代码、说明等等。例如可以使用`{% include beauty.png %}`插入一张图片。
 
 #### _layouts
 
-该文件夹保存了一些基本的模板，例如在默认页面`default.html`中，可以使用`{{ post.title }}`或`{{ post.content }}`直接插入layout为post的标题或者内容，可见上文关于[YAML Front Matter]()的描述。
+该文件夹保存了一些基本的模板，例如在默认页面`default.html`中，可以使用`{{ post.title }}`或`{{ post.content }}`直接插入layout为post的标题或者内容，可见上文关于[YAML Front Matter][]的描述。
 
 #### _posts
 
@@ -191,7 +191,7 @@ Jekyll使用[YAML Front Matter]()字段保存每一个页面的信息，例如�
 
 ## Jekyll-Bootstrap
 
-[Twitter-Bootstrap]()可谓前端利器，家喻户晓。而[Jekyll-Bootstrap]()也起到了类似的模板作用，它为jekyll生成静态博客提供了十分完善的模板，包括主题切换、评论系统、RSS源、SEO等。笔者在后来也采用了这套解决方案，它甚至加深了我对Liquid使用的理解。
+[Twitter-Bootstrap][]可谓前端利器，家喻户晓。而[Jekyll-Bootstrap][]也起到了类似的模板作用，它为jekyll生成静态博客提供了十分完善的模板，包括主题切换、评论系统、RSS源、SEO等。笔者在后来也采用了这套解决方案，它甚至加深了我对Liquid使用的理解。
 
 作者提供的rake命令可以快速完成一些操作。
 
