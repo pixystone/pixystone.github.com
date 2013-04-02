@@ -1,0 +1,7 @@
+.go_top {
+	/*font-size: 18px;*/
+	bottom: 100px;
+	right: 200px;
+	position: fixed;
+	display: block;
+}
