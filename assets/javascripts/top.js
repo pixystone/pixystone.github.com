@@ -3,37 +3,25 @@
 // <script type="text/javascript">
 //返回顶部
 $(function(){
-	var btn = $('.go_top').hide().attr('hideFocus', true);
-	if(!btn.length) return;
-	var 
-	timer,
-	offset = 0,
-	state = 'init',
-	win = $(window),
-	DOC = $(document),
-	docEl = $('body,html');
-	function getMaxHeight(){
-		return DOC.height() - win.height() - offset;
-	}
-	function _check(){
-		if(state !== 'playing'){
-			var top = win.scrollTop();
-			btn[top <= 300 || top > getMaxHeight() ? 'hide' : 'show']();
-		}
-	}
-	function checkFn(){
-		clearTimeout(timer);
-		timer = setTimeout(_check, 160);
-	}
-	win.scroll(_check);
-	btn.click(function(){
-		state = 'playing';
-		docEl.animate({ scrollTop: 0}, 720, function(){ state = 'ready';});
-		btn.hide();
+	//首先将#back-to-top隐藏
+	$(".go_top").hide();
+	//当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	$(function () {
+		$(window).scroll(function(){
+			if ($(window).scrollTop()>100){
+				$(".go_top").fadeIn(700);
+			}
+			else
+			{
+				$(".go_top").fadeOut(700);
+			}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$(".go_top").click(function(){
+			$('body,html').animate({scrollTop:0},1000);
+			return false;
+		});
 	});
-	setTimeout(function(){ _check();}, 320);
-	//FIX IE6
-	!+[1,] && !window.XMLHttpRequest && win.scroll(function(){ btn.stop().animate({top:win.scrollTop() + win.height() * 0.8}, 320);});
 });
 // </script>
 // <!-- end go top -->
