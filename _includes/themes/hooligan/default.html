@@ -60,6 +60,12 @@
             </ul>
             <ul class="nav pull-right social visible-desktop">
               <li class="divider-vertical"></li>
+              {% if site.author.weibo %}
+                <li>
+                  <a href="http://weibo.com/{{ site.author.github }}" class="zocial weibo icon" target="_blank">
+                    <span class="hidden-desktop">Weibo</a>
+                </li>
+              {% endif %}
               {% if site.author.github %}
                 <li>
                   <a href="https://www.github.com/{{ site.author.github }}" class="zocial github icon" target="_blank">
