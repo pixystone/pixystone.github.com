@@ -10,6 +10,8 @@ tags: [Python, Python Challenge]
 
 ## Challenge 2
 
+![ocr](/assets/images/posts/2013-01-09-python-challenge-2-ocr.jpg)
+
 [Challenge 2][]图片上是一本书，一堆字在上面，乍一看还真以为要使用OCR去识别上面的文字，问题是，图片太模糊了吧。
 
 还好下面有一行提示，去看页面源码吧。果然，页面源码中有一大堆乱码，注释中提示要找到这些乱码中的字母。

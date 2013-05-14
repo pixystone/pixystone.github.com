@@ -10,6 +10,8 @@ tags: [Python, Python Challenge]
 
 ## Challenge 3
 
+![bodyguard](/assets/images/posts/2013-01-10-python-challenge-3-bodyguard.jpg)
+
 [Challenge 3][]网页的标题是re，好的。页面源码中仍然是一大堆乱码，都是字母，大写的小写的混着一块。
 
     kAewtloYgcFQaJNhHVGxXDiQ...
