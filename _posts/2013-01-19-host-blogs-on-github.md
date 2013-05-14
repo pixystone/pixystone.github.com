@@ -237,7 +237,7 @@ Jekyll使用[YAML Front Matter][]字段保存每一个页面的信息，例如�
 [蒋鑫]: http://www.worldhello.net/
 [用 Git 维护博客？酷！]: http://www.worldhello.net/2011/11/29/jekyll-based-blog-setup.html
 [Github Page]: http://pages.github.com
-[jekyll]: https://github.com/mojombo/jekyll
+[jekyll]: http://jekyllrb.com/
 [pygments]: http://pygments.org/
 [Liquid]: http://liquidmarkup.org
 [Liquid Extensions]: https://github.com/mojombo/jekyll/wiki/liquid-extensions
