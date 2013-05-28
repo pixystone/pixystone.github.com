@@ -19,7 +19,7 @@ vsftpd不断在更新，从`apt-get`安装的版本是2.3+，所以在配置的�
 
 ## 根目录权限
 
-vsftpd在新版本中为了避免漏洞产生安全问题，限定了`/srv/ftp`目录的权限必须为`ugo-w`：
+vsftpd在新版本中为了避免漏洞产生安全问题，限定了`/srv/ftp`目录（ftp登录用户的根目录）的权限必须为`ugo-w`：
 
 ![vsftpd-screenshot-0](/assets/images/posts/2012-12-30-vsftpd-screenshot-0.png)
 
@@ -27,7 +27,7 @@ vsftpd在新版本中为了避免漏洞产生安全问题，限定了`/srv/ftp`�
 
 ![vsftpd-screenshot-1](/assets/images/posts/2012-12-30-vsftpd-screenshot-1.png)
 
-由于ftp目录没有写权限，所以不论如何配置，匿名用户都无法操作该目录。因此可以再新建一个目录pub便于匿名用户进行操作。
+由于ftp目录没有写权限，所以不论如何配置，匿名用户都无法操作该目录。因此可以再新建一个目录pub便于匿名用户所有进行操作。
 
 ---
 
@@ -58,11 +58,11 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
         # 全局关闭所有用户上传功能
         write_enable=NO
 
-        # 本地用户上传的文件保存权限为755
-        local_umask=022
+        # 本地用户上传的文件保存权限为774
+        local_umask=003
 
-        # 匿名用户上传的文件保存权限为755
-        anon_umask=022
+        # 匿名用户上传的文件保存权限为774
+        anon_umask=003
 
         # 不允许匿名用户上传
         anon_upload_enable=NO
@@ -138,28 +138,27 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
     $ vi tmp.txt
 {% endhighlight %}
 
-    内容如下：
+内容如下：
 
         user1
         password1
         user2
         password2
 
-    保存关闭。
+保存关闭。
 
-- 然后以这个文件为模板新建一个用户名密码数据库：
+- 然后以这个文件为模板新建一个用户名密码数据库即可[^3]：
 
 {% highlight sh %}
     $ db_load -T -t hash -f tmp.txt /etc/ftpconf/vsftpd_login.db
 {% endhighlight %}
 
-    db_load命令包含在db-util中，
+db_load命令包含在db-util中，
 
 {% highlight sh %}
     $ apt-get install db-util
 {% endhighlight %}
 
-    即可。[^3]
 
 ### 3. 配置vsftpd使用PAM认证虚拟用户
 
@@ -214,7 +213,7 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 - 那么在/user_config_dir/user1文件中的内容用于控制虚拟用户user1的行为：
 
         # 该虚拟用户登录后的根目录
-        local_root=/srv/ftp/
+        anon_root=/srv/ftp/
 
         # 由于全局变量配置了不允许上传，该可以用户单独配置上传
         write_enable=YES
@@ -230,8 +229,10 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
         # 如果这个虚拟用户是管理员，那么可以打开其它的高级写入权限，比如删除、更名等等。
         anon_other_write_enable=YES
 
-        # 上传后的文件权限为770
-        anon_umask=007
+        # 上传后的文件权限为774
+        anon_umask=003
+
+    需要注意的是，上传后的文件权限设置中，必须具备`o+r`的权限，这样所有匿名（包括虚拟）用户才能够读取文件和文件夹内容。
 
 - 很显然，这些参数将覆盖全局参数。更多参数详见：`man vsftpd.conf`。又是这句话:)
 
@@ -252,7 +253,7 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
 为了便于直接在服务器上管理某些文件夹中的内容，比如Documents，可以直接使用`mount --bind`命令将日常使用的用户文件夹挂载到`/srv/ftp/pub/`中。
 
-注意`mount`之后的文件内的权限，将组设置为ftp，所有者不变。那么就需要`g+rwx`权限了。
+注意`mount`之后的文件内的权限，将组设置为ftp，所有者可以不变。那么就需要`g+rwx`权限了。
 
 ---
 
@@ -264,7 +265,7 @@ vsftpd的配置文件在`/etc/vsftpd.conf`中，各种用法实际上都包含�
 
         virtual_use_local_privs=YES
 
-[^3]: 
+[^3]:
     选项`-T`允许应用程序能够将文本文件转译载入进数据库，由于之后是将虚拟用户的信息以文件方式存储在文件里的，为了让vsftpd能够通过文本来载入用户数据必须要使用这个选项。
 
     选项`-t`是用来指定转译载入的数据库类型：包括Btree、Hash、Queue、Recon，这里使用hash。
