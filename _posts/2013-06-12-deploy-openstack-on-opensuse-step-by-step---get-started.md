@@ -18,8 +18,6 @@ tags: [OpenStack, openSUSE, Cloud Compute]
 
 ## 服务架构
 
-![image](/assets/images/posts/2013-06-13-deploy-openstack-on-opensuse-step-by-step---get-started-architecture.png)
-
 OpenStack是多个服务的集合，包括Identity Service（Keystone）、Image Service（Glance）、Compute Service（Nova）、Object Storage Service（Swift）、Volume Service（Cinder）、Networking Service（Quantum）等。此外，还有基于Django的Web控制台Dashboard（Horizon）。
 
 Service Name | Code Name
