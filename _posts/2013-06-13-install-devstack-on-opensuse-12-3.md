@@ -23,7 +23,7 @@ $ ./stack.sh
 
 ---
 
-## `stack.sh`兼容性
+## stack.sh兼容性
 
 Devstack的`stack.sh`与openSUSE12.3并不兼容，提示的建议为12.2。
 
@@ -54,7 +54,7 @@ function get_python_exec_prefix() {
 
 {% highlight sh %}
 function get_python_exec_prefix() {
-    if is_fedora; then
+    if is_suse | is_fedora; then
         echo "/usr/bin"
     else
         echo "/usr/local/bin"
