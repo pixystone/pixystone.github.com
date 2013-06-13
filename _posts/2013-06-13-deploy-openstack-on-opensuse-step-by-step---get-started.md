@@ -1,0 +1,89 @@
+---
+layout: post
+title: "Deploy OpenStack on openSUSE Step by Step - Get Started"
+category: 笔记
+tags: [OpenStack, openSUSE, Cloud Compute]
+---
+{% include JB/setup %}
+
+---
+
+## OpenStack
+
+云——一种未来的资源，用[OpenStack][]创造云。
+
+快速创建单节点的OpenStack开发环境可以使用[Devstack][]，参见[Install Devstack on openSUSE 12.3]({% post_url 2013-06-10-install-devstack-on-opensuse-12-3 %})。
+
+---
+
+## 服务架构
+
+![image](/assets/images/posts/2013-06-13-deploy-openstack-on-opensuse-step-by-step---get-started-architecture.png)
+
+OpenStack是多个服务的集合，包括Identity Service（Keystone）、Image Service（Glance）、Compute Service（Nova）、Object Storage Service（Swift）、Volume Service（Cinder）、Networking Service（Quantum）等。此外，还有基于Django的Web控制台Dashboard（Horizon）。
+
+Service Name | Code Name
+-----------|:-----------:
+Identity | Keystone
+Compute | Nova
+Image | Glance
+Dashboard | Horizon
+Object Storage | Swift
+Volumes | Cinder
+Networking | Quantum
+
+
+---
+
+## 安装准备
+
+- 安装要求：CPU必须具备虚拟化技术，查看方式
+
+{% highlight sh %}
+$ grep -E "(vmx|svm)" /proc/cpuinfo
+{% endhighlight %}
+
+### 安装NTP（Network Time Protocol）
+
+保证Controller节点与Compute节点之间时间同步。
+
+{% highlight sh %}
+$ zypper in ntp
+{% endhighlight %}
+
+- 在Controller节点将/etc/ntp.conf中`server 127.127.1.0`与`fudge 127.127.1.0 stratum 10`取消注释，没有就加上即可。这一步添加本地的时钟同步。
+
+- 在各个Compute节点添加任务计划进行定时与Controller同步时间。在`/etc/cron.daily/ntpdate`加入
+
+		ntpdate <Controller节点的IP地址>
+		hwclock -w
+
+### 安装MySQL
+
+{% highlight sh %}
+$ zypper in mysql-community-server python-mysql
+{% endhighlight %}
+
+- 安装完成后，设置MySQL的root密码，然后启动服务
+
+{% highlight sh %}
+$ mysqladmin password <new password>
+$ service mysql start
+{% endhighlight %}
+
+- 安装Messaging Server
+
+{% highlight sh %}
+$ zypper in rabbigmq-server
+{% endhighlight %}
+
+...
+
+---
+
+### 参考文档
+
+OpenStack Installation Guide for Ubuntu 12.04: <http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/>
+
+[OpenStack]: http://openstack.org
+[Devstack]: http://devstack.org
