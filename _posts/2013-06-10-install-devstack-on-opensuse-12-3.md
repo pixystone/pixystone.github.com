@@ -29,8 +29,10 @@ Devstack的`stack.sh`与openSUSE12.3并不兼容，提示的建议为12.2。
 
 - 根据提示，加入`FORCE=yes`参数强制执行
 
-		$ cd devstack
-		$ echo "FORCE=yes" >> localrc
+{% highlight sh %}
+$ cd devstack
+$ echo "FORCE=yes" >> localrc
+{% endhighlight %}
 
 - 在运行过程中会出现无法连接到本地的服务（如`glance-api`,`nova-api`等），一定是服务启动失败。
 
