@@ -2,7 +2,7 @@
 layout: post
 title: "Install Devstack on openSUSE 12.3"
 category: 笔记
-tags: [Openstack, Devstack, openSUSE, Cloud Compute]
+tags: [OpenStack, Devstack, openSUSE, Cloud Compute]
 ---
 {% include JB/setup %}
 
@@ -10,7 +10,7 @@ tags: [Openstack, Devstack, openSUSE, Cloud Compute]
 
 ## Devstack
 
-在一台Linux上快速实现单节点（包括Nova Controller、Nova Compute）的[Openstack][]架构，可以使用[Devstack][]，迅速进入开发和学习状态[^1]。
+在一台Linux上快速实现单节点（包括Nova Controller、Nova Compute）的[OpenStack][]架构，可以使用[Devstack][]，迅速进入开发和学习状态[^1]。
 
 Devstack的安装很简单
 
@@ -75,6 +75,6 @@ $ ./stack.sh
 
 [^1]: 主要是开发，其实这种快速一个Shell Script文件搞定的最不利于学习了。
 
-[Openstack]: http://openstack.org
+[OpenStack]: http://openstack.org
 [Devstack]: http://devstack.org
 
