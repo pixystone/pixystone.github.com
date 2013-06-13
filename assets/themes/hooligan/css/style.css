@@ -52,7 +52,9 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 
 /* line 49, ../_sass/_base.scss */
 h1, h2 {
-  margin: 0 0 15px;
+/*<-----------------by Pixy----------------->*/
+  margin: 25px 0 15px;
+/*<-------------------END------------------->*/
 }
 
 /* line 53, ../_sass/_base.scss */
@@ -64,7 +66,21 @@ h1 {
 h2 {
   font-size: 30px;
 }
-
+/*<-----------------by Pixy----------------->*/
+h3 {
+  font-size: 25px;
+  margin: 15px 0 10px;
+}
+h4 {
+  font-size: 20px;
+  margin: 10px 0 10px;
+}
+h6 {
+  font-size: 15px;
+  text-align: center;
+  margin: 0 auto;
+}
+/*<-------------------END------------------->*/
 /* line 61, ../_sass/_base.scss */
 pre, code {
   color: #ccc;
@@ -149,12 +165,17 @@ hr {
   margin-top: 0;
 }
 /* line 134, ../_sass/_base.scss */
+/*<-----------------by Pixy----------------->*/
 .content p {
-  padding-bottom: 15px;
-  line-height: 25px;
+  padding-bottom: 10px;
+  line-height: 20px;
   margin: 0;
+  text-indent: 2em;
 }
-
+.content li p {
+  text-indent: 0em;
+}
+/*<-------------------END------------------->*/
 /* Page header tweaks */
 /* line 142, ../_sass/_base.scss */
 .page-header {
@@ -403,3 +424,22 @@ div.sidebar section img.icon {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
+/*<-----------------by Pixy----------------->*/
+table{
+  border:1px dashed #4cb4e8;
+  text-align: center;
+  margin:0 auto;
+}
+table tr {
+  height: 30px;
+}
+table th {
+  width: 200px;
+}
+table td{
+  border:1px dashed #4cb4e8;
+}
+table th{
+  border:1px dashed #4cb4e8;
+}
+/*<-------------------END------------------->*/
