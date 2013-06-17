@@ -35,6 +35,8 @@ Role | 描述User的角色，例如管理员admin、服务service、普通用户
 
 具体内容可参见[参考文档][OpenStack Installation Guide for Ubuntu 12.04]。
 
+---
+
 ## 安装Keystone
 
 根据上一篇，可以添加最新的Master源（Grizzly Release）。然后直接安装二进制包
@@ -42,6 +44,8 @@ Role | 描述User的角色，例如管理员admin、服务service、普通用户
 {% highlight sh %}
 $ zypper in openstack-keystone
 {% endhighlight %}
+
+---
 
 ## 配置Keystone
 
@@ -82,6 +86,13 @@ mysql> GRANT ALL ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '[keyston
 
 		connection = mysql://keystone:[keystone数据库的密码]@localhost/keystone
 
+- 设置服务目录保存在数据库中，不使用模板方式[^2]
+
+		[catalog]
+		driver = keystone.catalog.backends.sql.Catalog
+		# driver = keystone.catalog.backends.templated.TemplatedCatalog
+		# template_file = default_catalog.templates
+
 - 设置管理员令牌
 
 		admin_token = tokentoken
@@ -102,19 +113,11 @@ $ sudo service openstack-keystone restart
 $ keystone-manage db_sync
 {% endhighlight %}
 
-如果此处报错，将`/etc/keystone/default_catalog.templetes.sample`改名为`default_catalog.templetes`，参见`/etc/keystone/keystone.conf`中相关配置。注意权限。
-
-{% highlight sh %}
-$ cp -a /etc/keystone/default_catalog.templetes.sample /etc/keystone/default_catalog.templetes
-{% endhighlight %}
-
-
-
-## 配置Service相关的Tenant、User、Role
+### 配置Service相关的Tenant、User、Role
 
 这里，我们需要配置一些用户（比如，admin、service等），以及他们各自的角色，以便于Keystone与其他服务之间进行协作。
 
-> 建议使用[这个脚本](https://github.com/openstack/keystone/raw/master/tools/sample_data.sh)进行快速部署，如果需要学习，可以手动进行添加配置等。详情参见[OpenStack Installation Guide for Ubuntu 12.04][]
+> 建议使用[这个脚本](https://github.com/openstack/keystone/raw/master/tools/sample_data.sh)进行快速部署，如果需要学习，可以手动进行添加配置等。详情参见[OpenStack Installation Guide for Ubuntu 12.04][]，二者略有出入。
 
 {% highlight sh %}
 $ wget https://github.com/openstack/keystone/raw/master/tools/sample_data.sh
@@ -185,6 +188,7 @@ $ ./sample_data.sh
 	|  service_id |       fc0fb855a4824a05ae09c0f241974f32      |
 	+-------------+---------------------------------------------+
 
+---
 
 ## 验证安装
 
@@ -201,6 +205,15 @@ $ keystone --os-username=admin --os-password=secrete --os-auth-url=http://localh
 	|      id     |       MIICbgYJKoZIhvcNAQcCoIICXzC...        |
 	|   user_id   |       5c2d379b09d54c9588ccb8a13fe9b6bc      |
 	+-------------+---------------------------------------------+
+
+同样地，验证其它User的权限
+
+{% highlight sh %}
+$ keystone --os-username=glance --os-password=glance --os-auth-url=http://localhost:5000/v2.0 token-get
+$ keystone --os-username=nova --os-password=nova --os-auth-url=http://localhost:5000/v2.0 token-get
+$ keystone --os-username=ec2 --os-password=ec2 --os-auth-url=http://localhost:5000/v2.0 token-get
+$ keystone --os-username=swift --os-password=swiftpass --os-auth-url=http://localhost:5000/v2.0 token-get
+{% endhighlight %}
 
 
 ---

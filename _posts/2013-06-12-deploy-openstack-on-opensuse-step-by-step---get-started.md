@@ -88,6 +88,8 @@ $ zypper ar http://download.opensuse.org/repositories/Cloud:/OpenStack:/Master/o
 $ zypp-refresh
 {% endhighlight %}
 
+或者其它源,参见<http://download.opensuse.org/repositories/Cloud:/OpenStack:/>
+
 ...
 
 ---
