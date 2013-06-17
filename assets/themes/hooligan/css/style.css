@@ -175,6 +175,11 @@ hr {
 .content li p {
   text-indent: 0em;
 }
+.content blockquote p {
+  text-indent: 0em;
+  font-size: 14px;
+  font-style: italic;
+}
 /*<-------------------END------------------->*/
 /* Page header tweaks */
 /* line 142, ../_sass/_base.scss */
@@ -434,12 +439,14 @@ table tr {
   height: 30px;
 }
 table th {
-  width: 200px;
+  width: auto;
 }
 table td{
   border:1px dashed #4cb4e8;
+  padding: 10px;
 }
 table th{
   border:1px dashed #4cb4e8;
+  padding: 10px;
 }
 /*<-------------------END------------------->*/
