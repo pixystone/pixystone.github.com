@@ -35,7 +35,9 @@ Networking | Quantum
 
 ## 安装准备
 
-- 安装要求：CPU必须具备虚拟化技术，查看方式
+### CPU要求
+
+CPU必须具备虚拟化技术，查看方式：
 
 {% highlight sh %}
 $ grep -E "(vmx|svm)" /proc/cpuinfo
@@ -69,10 +71,21 @@ $ mysqladmin password <new password>
 $ service mysql start
 {% endhighlight %}
 
-- 安装Messaging Server
+### 安装Messaging Queue Server
+
+OpenStack各个模块进程之间通过消息队列服务分配任务。默认为RabbitMQ，另外也可以选择Qpid或者ZeroMQ。
 
 {% highlight sh %}
 $ zypper in rabbigmq-server
+{% endhighlight %}
+
+### 添加OpenStack源
+
+默认的源已经包含相应的二进制包，但不是最新的。可以添加[OpenSUSE Build Service][]中的源：
+
+{% highlight sh %}
+$ zypper ar http://download.opensuse.org/repositories/Cloud:/OpenStack:/Master/openSUSE_12.3/Cloud:OpenStack:Master.repo
+$ zypp-refresh
 {% endhighlight %}
 
 ...
@@ -81,7 +94,11 @@ $ zypper in rabbigmq-server
 
 ### 参考文档
 
-OpenStack Installation Guide for Ubuntu 12.04: <http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/>
+[OpenStack Installation Guide for Ubuntu 12.04][]
+
+
 
 [OpenStack]: http://openstack.org
 [Devstack]: http://devstack.org
+[OpenSUSE Build Service]: https://build.opensuse.org/project/show?project=Cloud%3AOpenStack
+[OpenStack Installation Guide for Ubuntu 12.04]: http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/
