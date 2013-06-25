@@ -59,7 +59,7 @@ $ zypper in openstack-cinder-api openstack-cinder-scheduler openstack-cinder-vol
 
 - 编辑`/etc/cinder/api-paste.ini`
 
-{% highlight text%}
+{% highlight text %}
 [filter:authtoken]
 paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory
 service_protocol = http
@@ -82,7 +82,7 @@ $ keystone user-role-add --tenant-id [xxx] --user-id [xxx] --role-id [xxx]
 
 - 配置`/etc/cinder/cinder.conf`，需要事先建立一个LVM卷组`cinder-volumes`，所以至少需要一块空闲分区。（LVM的管理自行Google）
 
-{% highlight text%}
+{% highlight text %}
 [DEFAULT]
 verbose = True 
 log_dir = /var/log/cinder
@@ -129,13 +129,106 @@ $ cinder create --display_name test 1
 $ cinder list
 {% endhighlight %}
 
-返回结果：[^3]
+返回结果：
 
-	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
-	|                  ID                  |   Status  | Display Name | Size | Volume Type | Bootable | Attached to |
-	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
-	| a33780a2-52b2-40b1-95eb-529283baa7e6 | available |     test     |  1   |     None    |          |             |
-	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+{% highlight text %}
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+|                  ID                  |   Status  | Display Name | Size | Volume Type | Bootable | Attached to |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+| a33780a2-52b2-40b1-95eb-529283baa7e6 | available |     test     |  1   |     None    |          |             |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+{% endhighlight %}
+
+此外，volume的状态不是`avaliable`和`error`时，比如`deleting`，是无法用`cinder delete`删除的。
+
+{% highlight text %}
++--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+|                  ID                  |     Status     | Display Name | Size | Volume Type | Bootable | Attached to |
++--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+| 992103a2-d40b-4346-8afc-75efdbc643f1 | error_deleting |     test     |  1   |     None    |          |             |
+| a33780a2-52b2-40b1-95eb-529283baa7e6 |   available    |     test     |  1   |     None    |          |             |
++--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+{% endhighlight %}
+
+{% highlight sh %}
+$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
+ERROR: Invalid volume: Volume status must be available or error (HTTP 400) (Request-ID: req-35f0b5fe-e435-4595-a31c-ce4e0d571f8e)
+{% endhighlight %}
+
+只能在数据库中将其状态修改为`error`。
+
+{% highlight mysql %}
+mysql>use cinder;
+mysql>select status,id from volumes;
++----------------+--------------------------------------+
+| status         | id                                   |
++----------------+--------------------------------------+
+| error_deleting | 992103a2-d40b-4346-8afc-75efdbc643f1 |
+| available      | a33780a2-52b2-40b1-95eb-529283baa7e6 |
++----------------+--------------------------------------+
+mysql>update volumes set status="error" where id="992103a2-d40b-4346-8afc-75efdbc643f1";
+mysql>select status,id from volumes;
++-----------+--------------------------------------+
+| status    | id                                   |
++-----------+--------------------------------------+
+| error     | 992103a2-d40b-4346-8afc-75efdbc643f1 |
+| available | a33780a2-52b2-40b1-95eb-529283baa7e6 |
++-----------+--------------------------------------+
+{% endhighlight %}
+
+然后，查看target中的节点信息
+
+$ tgtadm --lld iscsi --mode target --op show
+
+{% highlight text %}
+Target 1: iqn.2010-10.org.openstack:volume-992103a2-d40b-4346-8afc-75efdbc643f1
+	System information:
+		Driver: iscsi
+		State: ready
+	I_T nexus information:
+	LUN information:
+		LUN: 0
+			Type: controller
+			SCSI ID: IET     00010000
+			SCSI SN: beaf10
+			Size: 0 MB, Block size: 1
+			Online: Yes
+			Removable media: No
+			Prevent removal: No
+			Readonly: No
+			Thin-provisioning: No
+			Backing store type: null
+			Backing store path: None
+			Backing store flags:
+		LUN: 1
+			Type: disk
+			SCSI ID: IET     00010001
+			SCSI SN: beaf11
+			Size: 1074 MB, Block size: 512
+			Online: Yes
+			Removable media: No
+			Prevent removal: No
+			Readonly: No
+			Thin-provisioning: No
+			Backing store type: rdwr
+			Backing store path: /dev/cinder-volumes/volume-992103a2-d40b-4346-8afc-75efdbc643f1
+			Backing store flags:
+	Account information:
+	ACL information:
+		ALL
+{% endhighlight %}
+
+删除这个错误的节点
+
+{% highlight sh %}
+$ tgtadm --lld iscsi --mode target --op delete --tid 1
+{% endhighlight %}
+
+最后再使用`cinder delete`将其删除
+
+{% highlight sh %}
+$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
+{% endhighlight %}
 
 ---
 
@@ -163,87 +256,6 @@ $ cinder list
 		openstack-cinder ALL = (root) NOPASSWD: /usr/bin/cinder-rootwrap
 
 	类似的问题也会发生在Nova、Quantum服务，参考自：<https://lists.launchpad.net/openstack/msg22121.html>
-
-[^3]: volume的状态不是`avaliable`和`error`时，比如`deleting`，是无法用`cinder delete`删除的。
-
-		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
-		|                  ID                  |     Status     | Display Name | Size | Volume Type | Bootable | Attached to |
-		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
-		| 992103a2-d40b-4346-8afc-75efdbc643f1 | error_deleting |     test     |  1   |     None    |          |             |
-		| a33780a2-52b2-40b1-95eb-529283baa7e6 |   available    |     test     |  1   |     None    |          |             |
-		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
-
-		$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
-		ERROR: Invalid volume: Volume status must be available or error (HTTP 400) (Request-ID: req-35f0b5fe-e435-4595-a31c-ce4e0d571f8e)
-
-	只能在数据库中将其状态修改为`error`。
-
-		mysql>use cinder;
-		mysql>select status,id from volumes;
-		+----------------+--------------------------------------+
-		| status         | id                                   |
-		+----------------+--------------------------------------+
-		| error_deleting | 992103a2-d40b-4346-8afc-75efdbc643f1 |
-		| available      | a33780a2-52b2-40b1-95eb-529283baa7e6 |
-		+----------------+--------------------------------------+
-		mysql>update volumes set status="error" where id="992103a2-d40b-4346-8afc-75efdbc643f1";
-		mysql>select status,id from volumes;
-		+-----------+--------------------------------------+
-		| status    | id                                   |
-		+-----------+--------------------------------------+
-		| error     | 992103a2-d40b-4346-8afc-75efdbc643f1 |
-		| available | a33780a2-52b2-40b1-95eb-529283baa7e6 |
-		+-----------+--------------------------------------+
-
-
-	然后，查看target中的节点信息
-
-		$ tgtadm --lld iscsi --mode target --op show
-
-		Target 1: iqn.2010-10.org.openstack:volume-992103a2-d40b-4346-8afc-75efdbc643f1
-			System information:
-				Driver: iscsi
-				State: ready
-			I_T nexus information:
-			LUN information:
-				LUN: 0
-					Type: controller
-					SCSI ID: IET     00010000
-					SCSI SN: beaf10
-					Size: 0 MB, Block size: 1
-					Online: Yes
-					Removable media: No
-					Prevent removal: No
-					Readonly: No
-					Thin-provisioning: No
-					Backing store type: null
-					Backing store path: None
-					Backing store flags:
-				LUN: 1
-					Type: disk
-					SCSI ID: IET     00010001
-					SCSI SN: beaf11
-					Size: 1074 MB, Block size: 512
-					Online: Yes
-					Removable media: No
-					Prevent removal: No
-					Readonly: No
-					Thin-provisioning: No
-					Backing store type: rdwr
-					Backing store path: /dev/cinder-volumes/volume-992103a2-d40b-4346-8afc-75efdbc643f1
-					Backing store flags:
-			Account information:
-			ACL information:
-				ALL
-
-	删除这个错误的节点
-
-		$ tgtadm --lld iscsi --mode target --op delete --tid 1
-
-	最后再使用`cinder delete`将其删除
-
-		$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
-
 
 
 [OpenStack Installation Guide for Ubuntu 12.04]: http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/
