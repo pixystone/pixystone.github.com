@@ -2,7 +2,7 @@
 layout: post
 title: "Deploy OpenStack on openSUSE Step by Step - Image (Glance)"
 category: 笔记
-tags: [OpenStack, Keystone, openSUSE]
+tags: [OpenStack, Glance, openSUSE, Cloud Compute]
 ---
 {% include JB/setup %}
 
@@ -13,6 +13,8 @@ tags: [OpenStack, Keystone, openSUSE]
 ## OpenStack Image Service - Glance
 
 跟随[OpenStack Installation Guide for Ubuntu 12.04][]的节奏，我们遇到了Glance。简单地说，它提供磁盘镜像服务。
+
+---
 
 ## 安装Glance
 

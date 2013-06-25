@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "[转载]OpenStack架构详解"
-description: ""
-category: 
+category: 转载
 tags: [OpenStack, Cloud Compute]
 ---
 {% include JB/setup %}
