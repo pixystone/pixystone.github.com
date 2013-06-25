@@ -26,7 +26,7 @@ tags: [OpenStack, Nova, Cinder, openSUSE, Cloud Compute]
 $ grep -E '(vmx|svm)' /proc/cpuinfo
 {% endhighlight %}
 
-- 通过YAST工具，直接安装KVM，这里不详细介绍。安装后重启。
+- 使用YAST工具，直接安装KVM，这里不详细介绍。安装后重启。
 
 ### 配置网桥
 
@@ -54,7 +54,7 @@ mysql> quit
 - 安装
 
 {% highlight sh %}
-zypper in openstack-cinder-api openstack-cinder-scheduler openstack-cinder-volume python-cinderclient tgt open-iscsi
+$ zypper in openstack-cinder-api openstack-cinder-scheduler openstack-cinder-volume python-cinderclient tgt open-iscsi
 {% endhighlight %}
 
 - 编辑`/etc/cinder/api-paste.ini`
@@ -80,14 +80,6 @@ $ keystone user-create --tenant-id [xxx] --name cinder --pass cinder
 $ keystone user-role-add --tenant-id [xxx] --user-id [xxx] --role-id [xxx]
 {% endhighlight %}
 
-- 在MySQL中添加cinder相关配置
-
-{% highlight mysql %}
-mysql> CREATE DATABASE cinder;
-mysql> GRANT ALL ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY '[cinder的数据库密码]';
-mysql> quit
-{% endhighlight %}
-
 - 配置`/etc/cinder/cinder.conf`，需要事先建立一个LVM卷组`cinder-volumes`，所以至少需要一块空闲分区。（LVM的管理自行Google）
 
 {% highlight text%}
@@ -104,11 +96,52 @@ api_paste_config=/etc/cinder/api-paste.ini
 iscsi_helper = tgtadm
 {% endhighlight %}
 
-（本人暂时没有空闲分区，To be continued :）
+- 在MySQL中添加cinder相关配置
+
+{% highlight mysql %}
+mysql> CREATE DATABASE cinder;
+mysql> GRANT ALL ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY '[cinder的数据库密码]';
+mysql> quit
+{% endhighlight %}
+
+- 配置target framework (tgt)
+
+{% highlight sh %}
+$ echo "include /etc/tgt/conf.d/*.conf" >> /etc/tgt/targets.conf
+$ mkdir /etc/tgt/conf.d
+$ echo "include /var/lib/cinder/volumes/*" >> /etc/tgt/conf.d/cinder.conf
+$ rctgtd restart
+{% endhighlight %}
+
+- 初始化数据库，重启相关服务。`cinder-volume`启动错误详见[^2]
+
+{% highlight sh %}
+$ cinder-manage db sync
+$ rcopenstack-cinder-volume restart
+$ rcopenstack-cinder-api restart
+$ rcopenstack-cinder-scheduler restart
+{% endhighlight %}
+
+### 验证cinder安装
+
+{% highlight sh %}
+$ cinder create --display_name test 1
+$ cinder list
+{% endhighlight %}
+
+返回结果：[^3]
+
+	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+	|                  ID                  |   Status  | Display Name | Size | Volume Type | Bootable | Attached to |
+	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+	| a33780a2-52b2-40b1-95eb-529283baa7e6 | available |     test     |  1   |     None    |          |             |
+	+--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
 
 ---
 
 ## 安装Nova
+
+待续... :)
 
 ---
 
@@ -121,5 +154,96 @@ iscsi_helper = tgtadm
 #### 脚注
 
 [^1]: 可能已经存在了一个网桥。
+
+[^2]: `cinder-volume`服务启动失败，在`volume.log`中看到有关`sudo`的错误：`sudo: no tty present and no askpass program specified`，这是由于`openstack-cinder`用户在执行`sudo cinder-rootwrap`时，并没有无密码执行的sudo权限。
+
+	因此需要在`/etc/sudoers.d/cinder_sudoers`添加
+
+		Defaults: openstack-cinder !requiretty
+		openstack-cinder ALL = (root) NOPASSWD: /usr/bin/cinder-rootwrap
+
+	类似的问题也会发生在Nova、Quantum服务，参考自：<https://lists.launchpad.net/openstack/msg22121.html>
+
+[^3]: volume的状态不是`avaliable`和`error`时，比如`deleting`，是无法用`cinder delete`删除的。
+
+		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+		|                  ID                  |     Status     | Display Name | Size | Volume Type | Bootable | Attached to |
+		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+		| 992103a2-d40b-4346-8afc-75efdbc643f1 | error_deleting |     test     |  1   |     None    |          |             |
+		| a33780a2-52b2-40b1-95eb-529283baa7e6 |   available    |     test     |  1   |     None    |          |             |
+		+--------------------------------------+----------------+--------------+------+-------------+----------+-------------+
+
+		$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
+		ERROR: Invalid volume: Volume status must be available or error (HTTP 400) (Request-ID: req-35f0b5fe-e435-4595-a31c-ce4e0d571f8e)
+
+	只能在数据库中将其状态修改为`error`。
+
+		mysql>use cinder;
+		mysql>select status,id from volumes;
+		+----------------+--------------------------------------+
+		| status         | id                                   |
+		+----------------+--------------------------------------+
+		| error_deleting | 992103a2-d40b-4346-8afc-75efdbc643f1 |
+		| available      | a33780a2-52b2-40b1-95eb-529283baa7e6 |
+		+----------------+--------------------------------------+
+		mysql>update volumes set status="error" where id="992103a2-d40b-4346-8afc-75efdbc643f1";
+		mysql>select status,id from volumes;
+		+-----------+--------------------------------------+
+		| status    | id                                   |
+		+-----------+--------------------------------------+
+		| error     | 992103a2-d40b-4346-8afc-75efdbc643f1 |
+		| available | a33780a2-52b2-40b1-95eb-529283baa7e6 |
+		+-----------+--------------------------------------+
+
+
+	然后，查看target中的节点信息
+
+		$ tgtadm --lld iscsi --mode target --op show
+
+		Target 1: iqn.2010-10.org.openstack:volume-992103a2-d40b-4346-8afc-75efdbc643f1
+			System information:
+				Driver: iscsi
+				State: ready
+			I_T nexus information:
+			LUN information:
+				LUN: 0
+					Type: controller
+					SCSI ID: IET     00010000
+					SCSI SN: beaf10
+					Size: 0 MB, Block size: 1
+					Online: Yes
+					Removable media: No
+					Prevent removal: No
+					Readonly: No
+					Thin-provisioning: No
+					Backing store type: null
+					Backing store path: None
+					Backing store flags:
+				LUN: 1
+					Type: disk
+					SCSI ID: IET     00010001
+					SCSI SN: beaf11
+					Size: 1074 MB, Block size: 512
+					Online: Yes
+					Removable media: No
+					Prevent removal: No
+					Readonly: No
+					Thin-provisioning: No
+					Backing store type: rdwr
+					Backing store path: /dev/cinder-volumes/volume-992103a2-d40b-4346-8afc-75efdbc643f1
+					Backing store flags:
+			Account information:
+			ACL information:
+				ALL
+
+	删除这个错误的节点
+
+		$ tgtadm --lld iscsi --mode target --op delete --tid 1
+
+	最后再使用`cinder delete`将其删除
+
+		$ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
+
+
 
 [OpenStack Installation Guide for Ubuntu 12.04]: http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/
