@@ -139,6 +139,8 @@ $ cinder list
 +--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
 {% endhighlight %}
 
+#### volume状态错误
+
 此外，volume的状态不是`avaliable`和`error`时，比如`deleting`，是无法用`cinder delete`删除的。
 
 {% highlight text %}
@@ -178,7 +180,9 @@ mysql>select status,id from volumes;
 
 然后，查看target中的节点信息
 
+{% highlight sh %}
 $ tgtadm --lld iscsi --mode target --op show
+{% endhighlight %}
 
 {% highlight text %}
 Target 1: iqn.2010-10.org.openstack:volume-992103a2-d40b-4346-8afc-75efdbc643f1
@@ -234,7 +238,9 @@ $ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
 
 ## 安装Nova
 
-待续... :)
+~~待续... :)~~
+
+[安装OpenStack(openSUSE) Step by Step - Compute (Nova) (二)]({% post_url 2013-07-01-deploy-openstack-on-opensuse-step-by-step---compute-nova-2 %})
 
 ---
 
