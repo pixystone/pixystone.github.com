@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploy OpenStack on openSUSE Step by Step - Get Started"
+title: "安装OpenStack(openSUSE) Step by Step - Get Started"
 category: 笔记
 tags: [OpenStack, openSUSE, Cloud Compute]
 ---
@@ -12,7 +12,7 @@ tags: [OpenStack, openSUSE, Cloud Compute]
 
 云——一种未来的资源，用[OpenStack][]创造云。
 
-快速创建单节点的OpenStack开发环境可以使用[Devstack][]，参见[Install Devstack on openSUSE 12.3]({% post_url 2013-06-10-install-devstack-on-opensuse-12-3 %})。
+快速创建单节点的OpenStack开发环境可以使用[Devstack][]，参见[在openSUSE 12.3上安装DevStack]({% post_url 2013-06-10-install-devstack-on-opensuse-12-3 %})。
 
 ---
 

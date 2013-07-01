@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Deploy OpenStack on openSUSE Step by Step - Image (Glance)"
+title: "安装OpenStack(openSUSE) Step by Step - Image (Glance)"
 category: 笔记
 tags: [OpenStack, Glance, openSUSE, Cloud Compute]
 ---
 {% include JB/setup %}
 
-上一篇：[Deploy OpenStack on openSUSE Step by Step - Identity (Keystone)]({% post_url 2013-06-13-deploy-openstack-on-opensuse-step-by-step---identity-keystone %})
+上一篇：[安装OpenStack(openSUSE) Step by Step - Identity (Keystone)]({% post_url 2013-06-13-deploy-openstack-on-opensuse-step-by-step---identity-keystone %})
 
 ---
 
@@ -56,7 +56,7 @@ mysql> quit
 
 	flavor=keystone
 
-根据Keystone中有关Terent、User、Role的设置（参见上一篇：[Deploy OpenStack on openSUSE Step by Step - Identity (Keystone)]({% post_url 2013-06-13-deploy-openstack-on-opensuse-step-by-step---identity-keystone %})）
+根据Keystone中有关Terent、User、Role的设置（参见上一篇：[安装OpenStack(openSUSE) Step by Step - Identity (Keystone)]({% post_url 2013-06-13-deploy-openstack-on-opensuse-step-by-step---identity-keystone %})）
 配置其它参数
 
 	[keystone_authtoken]

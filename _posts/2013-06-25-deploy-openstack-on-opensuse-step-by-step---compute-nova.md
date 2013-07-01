@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Deploy OpenStack on openSUSE Step by Step - Compute (Nova)"
+title: "安装OpenStack(openSUSE) Step by Step - Compute (Nova) (一)"
 category: 笔记
 tags: [OpenStack, Nova, Cinder, openSUSE, Cloud Compute]
 ---
 {% include JB/setup %}
 
-上一篇：[Deploy OpenStack on openSUSE Step by Step - Image (Glance)]({% post_url 2013-06-17-deploy-openstack-on-opensuse-step-by-step---image-glance %})
+上一篇：[安装OpenStack(openSUSE) Step by Step - Image (Glance)]({% post_url 2013-06-17-deploy-openstack-on-opensuse-step-by-step---image-glance %})
 
 ---
 

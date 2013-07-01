@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Deploy OpenStack on openSUSE Step by Step - Identity (Keystone)"
+title: "安装OpenStack(openSUSE) Step by Step - Identity (Keystone)"
 category: 笔记
 tags: [OpenStack, Keystone, openSUSE, Cloud Compute]
 ---
 {% include JB/setup %}
 
-上一篇：[Deploy OpenStack on openSUSE Step by Step - Get Started]({% post_url 2013-06-12-deploy-openstack-on-opensuse-step-by-step---get-started %})
+上一篇：[安装OpenStack(openSUSE) Step by Step - Get Started]({% post_url 2013-06-12-deploy-openstack-on-opensuse-step-by-step---get-started %})
 
 ---
 
