@@ -238,7 +238,7 @@ $ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
 
 ## 安装Nova
 
-~~待续... :)~~
+<del>待续... :)</del>
 
 [安装OpenStack(openSUSE) Step by Step - Compute (Nova) (二)]({% post_url 2013-07-01-deploy-openstack-on-opensuse-step-by-step---compute-nova-2 %})
 
@@ -256,12 +256,15 @@ $ cinder delete 992103a2-d40b-4346-8afc-75efdbc643f1
 
 [^2]: `cinder-volume`服务启动失败，在`volume.log`中看到有关`sudo`的错误：`sudo: no tty present and no askpass program specified`，这是由于`openstack-cinder`用户在执行`sudo cinder-rootwrap`时，并没有无密码执行的sudo权限。
 
-	因此需要在`/etc/sudoers.d/cinder_sudoers`添加
+	<del>因此需要在`/etc/sudoers.d/cinder_sudoers`添加</del>
 
 		Defaults: openstack-cinder !requiretty
 		openstack-cinder ALL = (root) NOPASSWD: /usr/bin/cinder-rootwrap
 
 	类似的问题也会发生在Nova、Quantum服务，参考自：<https://lists.launchpad.net/openstack/msg22121.html>
 
+	解决方案：
+
+		$ zypper in openstack-suse-sudo
 
 [OpenStack Installation Guide for Ubuntu 12.04]: http://docs.openstack.org/grizzly/openstack-compute/install/apt/content/
