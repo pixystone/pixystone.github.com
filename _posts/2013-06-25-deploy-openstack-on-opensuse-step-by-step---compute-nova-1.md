@@ -97,6 +97,11 @@ t
 w
 {% endhighlight %}
 
+{% highlight sh%}
+pvcreate /dev/loop2
+vgcreate cinder-volumes /dev/loop2
+{% endhighlight %}
+
 - 配置`/etc/cinder/cinder.conf`。
 
 {% highlight text %}
