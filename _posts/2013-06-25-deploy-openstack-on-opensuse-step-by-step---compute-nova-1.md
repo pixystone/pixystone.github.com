@@ -80,7 +80,24 @@ $ keystone user-create --tenant-id [xxx] --name cinder --pass cinder
 $ keystone user-role-add --tenant-id [xxx] --user-id [xxx] --role-id [xxx]
 {% endhighlight %}
 
-- 配置`/etc/cinder/cinder.conf`，需要事先建立一个LVM卷组`cinder-volumes`，所以至少需要一块空闲分区。（LVM的管理自行Google）
+- 首先建立一个LVM卷组`cinder-volumes`，如果没有空闲分区，可以新建一个文件挂载为loop设备。参考自[OpenStack Grizzly Install Guide](https://github.com/mseknibilel/OpenStack-Grizzly-Install-Guide/blob/master/OpenStack_Grizzly_Install_Guide.rst)(A very good guide :) （另外，LVM的管理可以Google）
+
+{% highlight sh%}
+dd if=/dev/zero of=cinder-volumes bs=1 count=0 seek=2G
+losetup /dev/loop2 cinder-volumes
+fdisk /dev/loop2
+#Type in the followings:
+n
+p
+1
+ENTER
+ENTER
+t
+8e
+w
+{% endhighlight %}
+
+- 配置`/etc/cinder/cinder.conf`。
 
 {% highlight text %}
 [DEFAULT]
