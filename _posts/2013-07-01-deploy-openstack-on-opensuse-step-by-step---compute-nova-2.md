@@ -33,7 +33,35 @@ $ zypper in openstack-nova-compute openstack-nova-network
 
 笔者的配置文件仅供参考
 
-> 待添加：）
+{% highlight text %}
+[DEFAULT]
+verbose = True
+#debug = True
+logdir = /var/log/nova
+state_path = /var/lib/nova
+rootwrap_config = /etc/nova/rootwrap.conf
+compute_scheduler_driver=nova.scheduler.filter_scheduler.FilterScheduler
+sql_connection = mysql://nova:nova@192.168.11.11/nova
+libvirt_type = kvm 
+compute_driver = libvirt.LibvirtDriver
+instance_name_template = instance-%08x
+api_paste_config = /etc/nova/api-paste.ini
+
+rabbit_host = 192.168.11.11
+image_service=nova.image.glance.GlanceImageService
+glance_api_servers=192.168.11.11:9292
+
+my_ip = 192.168.11.11
+public_interface = eth0
+vlan_interface = eth0
+flat_network_bridge = br100
+flat_interface = eth0
+
+auth_strategy=keystone
+novncproxy_base_url = http://192.168.11.11:6080/vnc_auto.html
+vncserver_proxyclient_address = 192.168.11.11
+vncserver_listen = 192.168.11.11
+{% endhighlight %}
 
 一般情况下，Controller节点与Compute节点的配置信息可以相同，除了与IP相关的配置：
 
@@ -42,6 +70,10 @@ $ zypper in openstack-nova-compute openstack-nova-network
 - vncserver_proxyclient_address
 
 注意文件`nova.conf`的权限，所有权`root:openstack-nova`，mode`0640`。
+
+注意一些固定的格式，开头`[DEFAULT]`要大写。否则错误是`Cannot resolve relative uri 'config:api-paste.ini'`，比较让人费解。
+
+注意输入问题，有时候打错一个地方，报的错误也很让人匪夷所思。
 
 ### 初始化数据库
 
@@ -100,6 +132,16 @@ $ rcopenstack-nova-network start
 {% highlight sh %}
 $ nova-manage service list
 {% endhighlight %}
+
+{% highlight text %}
+Binary           Host                                 Zone             Status     State Updated_At
+nova-conductor   pixy-opensuse.wspn                   internal         enabled    :-)   2013-07-04 14:41:40
+nova-scheduler   pixy-opensuse.wspn                   internal         enabled    :-)   2013-07-04 14:41:41
+nova-consoleauth pixy-opensuse.wspn                   internal         enabled    :-)   2013-07-04 14:41:41
+nova-network     pixy-opensuse.wspn                   internal         enabled    :-)   2013-07-04 14:41:43
+{% endhighlight %}
+
+还是UTC时间：）
 
 ---
 
