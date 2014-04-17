@@ -163,6 +163,8 @@ Jekyll使用[YAML Front Matter][]字段保存每一个页面的信息，例如�
 
 #### _includes
 
+{% raw %}
+
 这个文件夹包含了一切可供[Liquid][]特殊语句使用的文件，包括image、html、或者纯文本的代码、说明等等。例如可以使用`{% include beauty.png %}`插入一张图片。
 
 #### _layouts
@@ -171,7 +173,9 @@ Jekyll使用[YAML Front Matter][]字段保存每一个页面的信息，例如�
 
 #### _posts
 
-这就是保存博客文章的文件夹，内含md、textile甚至txt文件。在这个文件夹中的页面，Liquid标记用{{ post }}表示，上文已有所涉及在此不再赘述。
+这就是保存博客文章的文件夹，内含md、textile甚至txt文件。在这个文件夹中的页面，Liquid标记用`{{ post }}`表示，上文已有所涉及在此不再赘述。
+
+{% endraw %}
 
 #### _site
 
