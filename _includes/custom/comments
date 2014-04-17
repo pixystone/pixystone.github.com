@@ -1,5 +1,6 @@
 {% case site.JB.comments.custom %}
 {% when "weibo" %}
+<div id="disqus_thread"></div>
 	<script type="text/javascript">
 	(function(){
 	var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&brandline=y&fontsize=14&skin=10&appkey=3213948790&iframskin=10&dpc=1";
