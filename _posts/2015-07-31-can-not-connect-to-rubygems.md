@@ -4,7 +4,6 @@ title: "gem安装jekyll连接失败"
 category: 笔记
 tags: [ruby, gem, jekyll]
 ---
-{% include JB/setup %}
 
 国内尿性网络导致`rubygems.org`偶尔无法访问，可以使用淘宝镜像：
 

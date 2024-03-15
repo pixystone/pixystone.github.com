@@ -4,7 +4,6 @@ title: "[转载] Jekyll 1.0 Released"
 category: 转载
 tags: [jekyll, jekyll-bootstrap, octopress]
 ---
-{% include JB/setup %}
 
 
 本文转自：[Mort \| Jekyll 1.0 发布](http://www.soimort.org/posts/157/)，版权归原作者所有。

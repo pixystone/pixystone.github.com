@@ -1,7 +1,6 @@
 ---
-layout: post
 title: "关于几个git命令的理解"
-category: 笔记
+categories: [笔记]
 tags: [git]
 ---
 
