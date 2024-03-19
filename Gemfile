@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-# source "https://rubygems.org"
-# source "https://mirrors.aliyun.com/rubygems/"
-source "http://mirrors.cloud.aliyuncs.com/rubygems"
+source "https://rubygems.org"
 
 # gem "rails"
 
