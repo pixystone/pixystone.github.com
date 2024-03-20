@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Ubuntu下FTP服务器搭建笔记 - vsftpd"
 category: 笔记
 tags: [ftp, ubuntu, pam, ssh, linux, vsftpd]

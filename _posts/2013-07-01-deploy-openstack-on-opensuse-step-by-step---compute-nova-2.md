@@ -4,7 +4,6 @@ title: "安装OpenStack(openSUSE) Step by Step - Compute (Nova) (二)"
 category: 笔记
 tags: [OpenStack, Nova, openSUSE, Cloud Compute]
 ---
-{% include JB/setup %}
 
 上一篇：[安装OpenStack(openSUSE) Step by Step - Compute (Nova) (一)]({% post_url 2013-06-25-deploy-openstack-on-opensuse-step-by-step---compute-nova-1 %})
 

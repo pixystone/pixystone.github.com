@@ -4,7 +4,6 @@ title: "安装OpenStack(openSUSE) Step by Step - Image (Glance)"
 category: 笔记
 tags: [OpenStack, Glance, openSUSE, Cloud Compute]
 ---
-{% include JB/setup %}
 
 上一篇：[安装OpenStack(openSUSE) Step by Step - Identity (Keystone)]({% post_url 2013-06-13-deploy-openstack-on-opensuse-step-by-step---identity-keystone %})
 

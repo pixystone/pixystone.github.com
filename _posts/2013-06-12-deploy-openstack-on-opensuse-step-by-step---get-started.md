@@ -4,7 +4,6 @@ title: "安装OpenStack(openSUSE) Step by Step - Get Started"
 category: 笔记
 tags: [OpenStack, openSUSE, Cloud Compute]
 ---
-{% include JB/setup %}
 
 ---
 

@@ -4,7 +4,6 @@ title: "Undefined symbol 乱码是什么"
 category: 备忘
 tags: [C++]
 ---
-{% include JB/setup %}
 
 程序猿在Debug的时候应该经常会遇到`undefined symbol`这样的东西，后面跟上一串乱码，比如
 

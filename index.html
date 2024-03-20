@@ -1,31 +1,5 @@
 ---
-layout: page
+layout: home
 title: 积跬步以至千里
 post_limit: 2
 ---
-{% include JB/setup %}
-
-<!-- {% for post in site.posts limit:page.post_limit %}
-
-<h2><li><span>{{ post.date | date_to_string }}</span> &raquo;</li></h2>
-<h1><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h1>
-
-<div>
-{{ post.content }}
-</div>
-
-<b><small><a href="{{ BASE_PATH }}{{ post.url }}/#disqus_thread">Comment</a></small></b>
-<br />
-<br />
-
-{% endfor %} -->
-
-<!-- <h3><a href="{{ BASE_PATH }}/archive.html">所有文章</a></h3> -->
-
-<!-- <hr> -->
-
-{% for post in site.posts %}
-
-<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-
-{% endfor %}

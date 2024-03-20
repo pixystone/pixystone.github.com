@@ -4,7 +4,6 @@ title: "Python Challenge 2"
 category: 笔记
 tags: [Python, Python Challenge]
 ---
-{% include JB/setup %}
 
 ---
 

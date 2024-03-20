@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Gitweb 与 Apache2 的协奏"
 category: 笔记
 tags: [git, gitweb, apache, ssh, linux, gitolite]

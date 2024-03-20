@@ -4,7 +4,6 @@ title: "[转载]OpenStack架构详解"
 category: 转载
 tags: [OpenStack, Cloud Compute]
 ---
-{% include JB/setup %}
 
 转自：<http://os.51cto.com/art/201205/336386.htm>
 

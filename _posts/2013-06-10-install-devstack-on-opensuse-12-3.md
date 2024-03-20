@@ -4,7 +4,6 @@ title: "在openSUSE 12.3上安装DevStack"
 category: 笔记
 tags: [OpenStack, DevStack, openSUSE, Cloud Compute]
 ---
-{% include JB/setup %}
 
 ---
 
